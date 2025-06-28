@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dinamika Fluida</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+      }
+      .equation {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-family: "Courier New", monospace;
+        overflow-x: auto;
+      }
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #3b82f6;
+        transition: width 0.3s;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+      <header class="mb-12 text-center">
+        <h1 class="text-4xl font-bold text-blue-800 mb-4">Dinamika Fluida</h1>
+        <div class="w-full h-64 rounded-lg overflow-hidden shadow-lg">
+          <img
+            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1f8b1223-a08e-40a3-9ec6-4bf7c7cd31df.png"
+            alt="Ilustrasi visual aliran fluida yang menunjukkan garis arus berwarna biru mengalir di sekitar objek silinder dengan visualisasi efek Bernoulli"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </header>
+
+      <nav class="sticky top-0 bg-white shadow-sm rounded-lg mb-8 p-4">
+        <ul class="flex flex-wrap justify-center gap-6">
+          <li>
+            <a
+              href="index.html"
+              class="nav-link text-gray-700 hover:text-blue-600"
+              >kembali</a
+            >
+          </li>
+          <li>
+            <a
+              href="#pengantar"
+              class="nav-link text-gray-700 hover:text-blue-600"
+              >Pengantar</a
+            >
+          </li>
+          <li>
+            <a
+              href="#prinsip"
+              class="nav-link text-gray-700 hover:text-blue-600"
+              >Prinsip Dasar</a
+            >
+          </li>
+          <li>
+            <a
+              href="#persamaan"
+              class="nav-link text-gray-700 hover:text-blue-600"
+              >Persamaan</a
+            >
+          </li>
+          <li>
+            <a
+              href="#aplikasi"
+              class="nav-link text-gray-700 hover:text-blue-600"
+              >Aplikasi</a
+            >
+          </li>
+          <li>
+            <a
+              href="#simulasi"
+              class="nav-link text-gray-700 hover:text-blue-600"
+              >Simulasi</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <main class="space-y-12">
+        <section id="pengantar" class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-blue-700 mb-4">
+            Pengantar Dinamika Fluida
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <p class="mb-4">
+                Dinamika fluida adalah cabang ilmu fisika yang mempelajari
+                pergerakan fluida (cairan dan gas) dan gaya-gaya yang bekerja
+                padanya. Bidang ini memiliki aplikasi luas mulai dari
+                meteorologi, teknik penerbangan, hingga sistem peredaran darah.
+              </p>
+              <p class="mb-4">Fluida dibagi menjadi dua kategori utama:</p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>
+                  <strong>Fluida Newtonian:</strong> Fluida yang tegangan
+                  gesernya berbanding lurus dengan laju deformasi
+                </li>
+                <li>
+                  <strong>Fluida Non-Newtonian:</strong> Tegangan geser tidak
+                  berbanding lurus dengan laju deformasi
+                </li>
+              </ul>
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="w-full h-64 rounded-lg overflow-hidden">
+                <img
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/33e1348b-5dd7-4df3-be0b-e71e1a307226.png"
+                  alt="Perbandingan visual antara aliran fluida Newtonian (lurus dan konsisten) dan Non-Newtonian (bervariasi secara tidak linier) dalam pipa transparan"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="prinsip" class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-blue-700 mb-4">
+            Prinsip Dasar Dinamika Fluida
+          </h2>
+
+          <div class="space-y-8">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xl font-medium text-blue-600 mb-3">
+                  Persamaan Kontinuitas
+                </h3>
+                <p>
+                  Menyatakan bahwa massa fluida yang masuk sama dengan massa
+                  fluida yang keluar dari suatu volume:
+                </p>
+                <div class="equation my-3">∮ ρv · dA = -∂/∂t ∭ ρ dV</div>
+                <p>
+                  Dimana ρ adalah densitas fluida dan v adalah kecepatan fluida.
+                </p>
+              </div>
+              <div class="flex items-center justify-center">
+                <div class="w-full h-48 rounded-lg overflow-hidden">
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3b8bf1ae-f0e4-4f50-9e1e-f5aadc469adf.png"
+                    alt="Diagram aliran fluida dalam pipa dengan bagian lebar dan sempit menunjukkan hukum kontinuitas"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="flex items-center justify-center order-2 md:order-1">
+                <div class="w-full h-48 rounded-lg overflow-hidden">
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/485ecbc9-52f3-4238-b6c6-9afbc2ffe548.png"
+                    alt="Ilustrasi efek Bernoulli menunjukkan aliran udara dengan tekanan berbeda di atas dan bawah sayap pesawat"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="order-1 md:order-2">
+                <h3 class="text-xl font-medium text-blue-600 mb-3">
+                  Teorema Bernoulli
+                </h3>
+                <p>
+                  Menyatakan hubungan antara kecepatan, tekanan, dan ketinggian
+                  dalam aliran fluida:
+                </p>
+                <div class="equation my-3">P + ½ρv² + ρgh = konstan</div>
+                <p>
+                  Dimana P adalah tekanan, v kecepatan, h ketinggian, g
+                  percepatan gravitasi, dan ρ densitas fluida.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="persamaan" class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-blue-700 mb-4">
+            Persamaan Fundamental
+          </h2>
+
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xl font-medium text-blue-600 mb-3">
+                Persamaan Navier-Stokes
+              </h3>
+              <p>
+                Persamaan fundamental yang menggambarkan gerakan fluida viskos:
+              </p>
+              <div class="equation my-3">
+                ρ(∂v/∂t + v · ∇v) = -∇P + μ∇²v + ρg
+              </div>
+              <p>
+                Dimana μ adalah viskositas dinamis dan g adalah percepatan
+                gravitasi.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xl font-medium text-blue-600 mb-3">
+                  Bilangan Reynolds
+                </h3>
+                <p>Parameter penting yang menentukan jenis aliran:</p>
+                <div class="equation my-3">Re = (ρvL)/μ</div>
+                <p>
+                  Dimana L adalah panjang karakteristik. Re rendah menunjukkan
+                  aliran laminar, Re tinggi menunjukkan turbulen.
+                </p>
+              </div>
+              <div class="flex items-center justify-center">
+                <div class="w-full h-48 rounded-lg overflow-hidden">
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9e56568f-e304-4650-a254-e1b2a4d47bff.png"
+                    alt="Visualisasi aliran laminar (halus) vs turbulen (kacau) dalam tabung dengan indikator bilangan Reynolds"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="aplikasi" class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-blue-700 mb-4">
+            Aplikasi dalam Kehidupan Sehari-hari
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <div class="h-40 mb-3 rounded-lg overflow-hidden">
+                <img
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c9ed31dc-3431-45dd-bad7-bb9581f732fb.png"
+                  alt="Ilustrasi aerodinamika mobil dengan garis aliran udara berwarna biru di sekeliling body mobil"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="text-lg font-medium text-blue-600 mb-2">
+                Aerodinamika Kendaraan
+              </h3>
+              <p>
+                Desain bentuk mobil dan pesawat untuk mengurangi hambatan udara
+                dan meningkatkan efisiensi bahan bakar.
+              </p>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <div class="h-40 mb-3 rounded-lg overflow-hidden">
+                <img
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f7139763-cd88-41aa-b177-69e3054fad6a.png"
+                  alt="Sistem pipa kompleks di pembangkit listrik dengan indikator aliran fluida"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="text-lg font-medium text-blue-600 mb-2">
+                Sistem Pipa Industri
+              </h3>
+              <p>
+                Perancangan sistem distribusi fluida dalam industri minyak, gas,
+                dan air minum.
+              </p>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <div class="h-40 mb-3 rounded-lg overflow-hidden">
+                <img
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/973a9661-11e0-4cb4-a8f2-7b8b706508f7.png"
+                  alt="Model sistem peredaran darah manusia dengan pembuluh darah dalam berbagai ukuran"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="text-lg font-medium text-blue-600 mb-2">
+                Hidrodinamika Medis
+              </h3>
+              <p>
+                Studi aliran darah dalam sistem kardiovaskular untuk aplikasi
+                medis dan desain alat kesehatan.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="simulasi" class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-blue-700 mb-8">
+            Simulasi Interaktif
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="border border-gray-200 rounded-lg p-4">
+              <h3 class="text-lg font-medium text-blue-600 mb-3">
+                Visualisasi Aliran dalam Pipa
+              </h3>
+              <div
+                class="w-full h-64 bg-gray-100 rounded-lg overflow-hidden mb-4 flex items-center justify-center"
+                id="pipeFlowCanvas"
+              >
+                <p class="text-gray-500">Memuat simulasi...</p>
+              </div>
+              <div class="space-y-3">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700"
+                    >Diameter Pipa (cm)</label
+                  >
+                  <input
+                    type="range"
+                    min="1"
+                    max="10"
+                    value="5"
+                    step="0.1"
+                    class="w-full mt-1"
+                    id="pipeDiameter"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700"
+                    >Kecepatan Aliran (m/s)</label
+                  >
+                  <input
+                    type="range"
+                    min="0.1"
+                    max="5"
+                    value="2"
+                    step="0.1"
+                    class="w-full mt-1"
+                    id="flowVelocity"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700"
+                    >Viskositas</label
+                  >
+                  <select class="w-full mt-1 border rounded p-2" id="viscosity">
+                    <option value="low">Rendah (Air)</option>
+                    <option value="medium">Sedang (Minyak)</option>
+                    <option value="high">Tinggi (Madu)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-medium text-blue-600 mb-3">
+                Hasil Simulasi
+              </h3>
+              <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                <h4 class="font-medium mb-2">Parameter:</h4>
+                <div class="grid grid-cols-2 gap-2 text-sm">
+                  <div>Diameter:</div>
+                  <div id="pipeDiameterValue">5 cm</div>
+                  <div>Kecepatan:</div>
+                  <div id="flowVelocityValue">2 m/s</div>
+                  <div>Viskositas:</div>
+                  <div id="viscosityValue">Rendah (Air)</div>
+                </div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h4 class="font-medium mb-2">Analisis:</h4>
+                <ul class="list-disc pl-5 space-y-1 text-sm" id="flowAnalysis">
+                  <li>Aliran bersifat laminar</li>
+                  <li>Bilangan Reynolds: 1000</li>
+                  <li>Tidak ada turbulensi yang signifikan</li>
+                  <li>Tekanan stabil di sepanjang pipa</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer
+        class="mt-16 border-t border-gray-200 pt-8 text-center text-gray-600"
+      >
+        <p class="mb-2">Sumber referensi:</p>
+        <ul class="flex flex-wrap justify-center gap-4">
+          <li>
+            <a href="#" class="text-blue-600 hover:underline"
+              >Batchelor, G.K. (2000). An Introduction to Fluid Dynamics.</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-blue-600 hover:underline"
+              >White, F.M. (2006). Viscous Fluid Flow.</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-blue-600 hover:underline"
+              >Munson, B.R. et al. (2013). Fundamentals of Fluid Mechanics.</a
+            >
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script>
+      // Update simulation parameters
+      document
+        .getElementById("pipeDiameter")
+        .addEventListener("input", function () {
+          document.getElementById("pipeDiameterValue").textContent =
+            this.value + " cm";
+          updateSimulation();
+        });
+
+      document
+        .getElementById("flowVelocity")
+        .addEventListener("input", function () {
+          document.getElementById("flowVelocityValue").textContent =
+            this.value + " m/s";
+          updateSimulation();
+        });
+
+      document
+        .getElementById("viscosity")
+        .addEventListener("change", function () {
+          const viscosityText = {
+            low: "Rendah (Air)",
+            medium: "Sedang (Minyak)",
+            high: "Tinggi (Madu)",
+          };
+          document.getElementById("viscosityValue").textContent =
+            viscosityText[this.value];
+          updateSimulation();
+        });
+
+      function updateSimulation() {
+        const diameter = parseFloat(
+          document.getElementById("pipeDiameter").value
+        );
+        const velocity = parseFloat(
+          document.getElementById("flowVelocity").value
+        );
+        const viscosity = document.getElementById("viscosity").value;
+
+        // Simple simulation analysis based on inputs
+        let reynolds;
+        switch (viscosity) {
+          case "low":
+            reynolds = Math.round(velocity * diameter * 1000);
+            break;
+          case "medium":
+            reynolds = Math.round(velocity * diameter * 500);
+            break;
+          case "high":
+            reynolds = Math.round(velocity * diameter * 100);
+            break;
+        }
+
+        const analysisList = document.getElementById("flowAnalysis");
+        analysisList.innerHTML = `
+                <li>${
+                  reynolds < 2300
+                    ? "Aliran bersifat laminar"
+                    : "Aliran bersifat turbulen"
+                }</li>
+                <li>Bilangan Reynolds: ${reynolds}</li>
+                <li>${
+                  reynolds < 2300
+                    ? "Tidak ada turbulensi yang signifikan"
+                    : "Terjadi turbulensi dalam aliran"
+                }</li>
+                <li>${
+                  velocity > 3 && diameter < 3
+                    ? "Potensi penurunan tekanan yang signifikan"
+                    : "Tekanan stabil di sepanjang pipa"
+                }</li>
+            `;
+
+        // Simple canvas visualization
+        const canvas = document.getElementById("pipeFlowCanvas");
+        canvas.innerHTML = `<div class="relative w-full h-full bg-gray-200 overflow-hidden">
+                <div class="absolute left-0 top-1/2 w-full h-12 bg-blue-500 rounded-full transform -translate-y-1/2"></div>
+                <div class="absolute ${
+                  reynolds < 2300 ? "h-10" : "h-16"
+                } left-0 top-1/2 w-full bg-blue-300 rounded-full transform -translate-y-1/2 overflow-hidden">
+                    ${
+                      reynolds < 2300
+                        ? '<div class="h-full w-full bg-blue-400" style="background: linear-gradient(to right, rgba(0,0,255,0.2), rgba(0,0,255,0.4))"></div>'
+                        : '<div class="h-full w-full" style="background: url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="rgba(0,0,255,0.3)" d="M0 10 Q 10 5 20 10 T 40 10" /></svg>\') repeat"></div>'
+                    }
+                </div>
+                <div class="absolute top-4 right-4 bg-white px-2 py-1 rounded text-xs font-medium">
+                    Re = ${reynolds}
+                </div>
+            </div>`;
+      }
+
+      // Initialize simulation
+      updateSimulation();
+    </script>
+  </body>
+</html>

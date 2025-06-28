@@ -1,1 +1,1 @@
-# skripsime
+# SKRIPSI

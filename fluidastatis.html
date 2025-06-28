@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi Fluida Statis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f9ff;
+        color: #1e3a8a;
+      }
+      .section-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .section-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      .formula-box {
+        background-color: #e0f2fe;
+        border-left: 4px solid #0369a1;
+      }
+      .interactive-circle {
+        width: 250px;
+        height: 250px;
+        border: 3px solid #0369a1;
+        position: relative;
+        transition: all 0.5s ease;
+      }
+      .depth-indicator {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        background: linear-gradient(to top, #22d3ee, #3b82f6);
+        transition: height 1s ease;
+      }
+      .pressure-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body class="py-8 px-4 md:px-16 lg:px-32">
+    <div class="max-w-5xl mx-auto">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4 text-blue-900">
+          Fisika Fluida Statis: Tekanan Hidrostatis, Atmosfer & Mutlak
+        </h1>
+
+        <a href="index.html"> <button type="button">kembali</button>></a>
+
+        <div class="w-full mb-6 rounded-xl overflow-hidden">
+          <img
+            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4607b1e5-cb7a-4fe8-879a-cfbd3d8b66e8.png"
+            alt="Ilustrasi konsep fisika fluida statis: tekanan dalam fluida, atmosfer, dan aplikasi kehidupan nyata"
+          />
+        </div>
+        <p class="text-lg text-blue-800 max-w-3xl mx-auto leading-relaxed">
+          Fluida statis mempelajari sifat-sifat fluida (cairan dan gas) dalam
+          keadaan diam. Materi ini mencakup tiga konsep utama:
+          <strong>Tekanan Hidrostatis</strong> (tekanan dalam fluida),
+          <strong>Tekanan Atmosfer</strong> (tekanan udara), dan
+          <strong>Tekanan Mutlak</strong> (total tekanan). Simulasi interaktif
+          di bawah akan membantu pemahaman konsep-konsep fisika ini.
+        </p>
+      </header>
+
+      <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Tekanan Hidrostatis Section -->
+        <section class="section-card p-6">
+          <h2 class="text-2xl font-semibold mb-4 text-blue-800">
+            Tekanan Hidrostatis
+          </h2>
+          <div
+            class="mb-4 bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg"
+          >
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1c33b008-a126-4401-a45b-1e059424dcbb.png"
+              alt="Diagram ilustrasi hukum Pascal: tekanan dalam fluida ditransmisikan merata ke segala arah"
+              class="mx-auto"
+            />
+            <div class="mt-4 p-3 bg-white rounded-md shadow-inner">
+              <p class="text-sm">Hukum Utama Hidrostatis:</p>
+              <p class="font-semibold">P<sub>2</sub> - P<sub>1</sub> = ρgh</p>
+            </div>
+          </div>
+          <div class="mb-4">
+            <p class="mb-4">
+              Tekanan hidrostatis adalah tekanan yang diakibatkan oleh berat
+              fluida di atas suatu titik ketika fluida diam.
+            </p>
+            <div class="p-4 formula-box rounded mb-4">
+              <p class="font-mono">P = ρ × g × h</p>
+              <p class="text-sm mt-2">
+                P = tekanan hidrostatis (Pa)<br />
+                ρ = massa jenis fluida (kg/m³)<br />
+                g = percepatan gravitasi (9.8 m/s²)<br />
+                h = kedalaman titik (m)
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-lg font-semibold mb-2 text-blue-700">
+            Simulasi Tekanan Hidrostatis
+          </h3>
+          <div class="flex flex-col items-center mb-4">
+            <div
+              class="interactive-circle mb-4 rounded-full flex items-center justify-center bg-blue-50"
+            >
+              <div class="depth-indicator"></div>
+              <div class="water-level">
+                <img
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c7a90fb0-7797-452d-9563-5a427b3d9403.png"
+                  alt="Simulasi tekanan hidrostatis dalam bejana: Air biru dengan ukuran kedalaman yang dapat diatur"
+                />
+              </div>
+            </div>
+            <div class="w-full">
+              <label class="block mb-1 text-sm font-medium text-blue-700"
+                >Kedalaman (m):</label
+              >
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+                id="depthSlider"
+              />
+              <div class="flex justify-between text-xs text-blue-600">
+                <span>0</span>
+                <span>25</span>
+                <span>50</span>
+                <span>75</span>
+                <span>100</span>
+              </div>
+            </div>
+            <div class="mt-2">
+              <p id="pressureDisplay" class="text-sm font-mono"></p>
+            </div>
+          </div>
+          <button
+            onclick="calculateHydrostaticPressure()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-300"
+          >
+            Hitung Tekanan
+          </button>
+        </section>
+
+        <!-- Tekanan Atmosfer Section -->
+        <section class="section-card p-6">
+          <h2 class="text-2xl font-semibold mb-4 text-blue-800">
+            Tekanan Atmosfer
+          </h2>
+          <div class="mb-4">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a0f265a7-493b-4149-aa38-c9c89b26543a.png"
+              alt="Lapisan atmosfer bumi dengan tekanan menurun seiring ketinggian, menunjukkan alat pengukur tekanan di permukaan tanah"
+            />
+          </div>
+          <div class="mb-4">
+            <p class="mb-4">
+              Tekanan atmosfer adalah tekanan yang diakibatkan oleh berat udara
+              di atas suatu permukaan. Tekanan atmosfer standar di permukaan
+              laut adalah:
+            </p>
+            <div class="p-4 formula-box rounded mb-4">
+              <p class="font-mono">1 atm = 101325 Pa = 760 mmHg</p>
+            </div>
+            <p>Tekanan atmosfer menurun seiring dengan kenaikan ketinggian.</p>
+          </div>
+
+          <h3 class="text-lg font-semibold mb-2 text-blue-700">
+            Variasi berdasarkan Ketinggian
+          </h3>
+          <div class="mb-4">
+            <div
+              class="h-48 relative bg-gradient-to-t from-sky-50 via-blue-100 to-blue-300 rounded-lg overflow-hidden border border-blue-200"
+            >
+              <div
+                class="absolute bottom-0 left-0 right-0 h-16 bg-green-500/80"
+                title="Permukaan Bumi"
+              ></div>
+              <div
+                class="absolute left-0 right-0 bg-white/40 h-px"
+                style="bottom: 25%"
+              ></div>
+              <div
+                class="absolute left-0 right-0 bg-white/30 h-px"
+                style="bottom: 50%"
+              ></div>
+              <div
+                class="absolute left-0 right-0 bg-white/20 h-px"
+                style="bottom: 75%"
+              ></div>
+              <div
+                id="atmPointer"
+                class="absolute left-1/2 h-3 w-3 bg-red-600 rounded-full transform -translate-x-1/2 flex items-center justify-center"
+              >
+                <div
+                  class="absolute -bottom-6 text-xs font-semibold text-red-700"
+                >
+                  Ketinggian
+                </div>
+              </div>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="20"
+              value="0"
+              class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer mb-2"
+              id="altitudeSlider"
+            />
+            <label for="altitudeSlider" class="text-sm text-blue-700"
+              >Ketinggian (km): <span id="altitudeValue">0</span></label
+            >
+          </div>
+          <div class="p-3 bg-blue-100 rounded-lg">
+            <p class="text-sm font-medium text-blue-800">
+              Tekanan Atmosfer:
+              <span id="atmPressure" class="font-mono">101325</span> Pa
+            </p>
+          </div>
+        </section>
+
+        <!-- Tekanan Mutlak Section -->
+        <section class="section-card p-6">
+          <h2 class="text-2xl font-semibold mb-4 text-blue-800">
+            Tekanan Mutlak
+          </h2>
+          <div class="mb-4">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8030522e-a429-4063-a135-71fdfce27bd6.png"
+              alt="Diagram yang menunjukkan hubungan antara tekanan atmosfer, tekanan hidrostatis, dan tekanan mutlak dalam kolom fluida"
+            />
+          </div>
+          <div class="mb-4">
+            <p class="mb-4">
+              Tekanan mutlak adalah jumlah dari tekanan atmosfer dan tekanan
+              hidrostatis:
+            </p>
+            <div class="p-4 formula-box rounded mb-4">
+              <p class="font-mono">
+                P<sub>mutlak</sub> = P<sub>atm</sub> + P<sub>hidrostatis</sub>
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-lg font-semibold mb-2 text-blue-700">
+            Kalkulator Tekanan Mutlak
+          </h3>
+          <div class="space-y-4 mb-4">
+            <div>
+              <label class="block text-sm font-medium text-blue-700 mb-1"
+                >Tekanan Atmosfer (Pa)</label
+              >
+              <input
+                type="number"
+                id="atmInput"
+                value="101325"
+                class="w-full p-2 border border-blue-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-blue-700 mb-1"
+                >Kedalaman (m)</label
+              >
+              <input
+                type="number"
+                id="depthInput"
+                value="0"
+                class="w-full p-2 border border-blue-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-blue-700 mb-1"
+                >Massa Jenis Fluida (kg/m³)</label
+              >
+              <input
+                type="number"
+                id="densityInput"
+                value="1000"
+                class="w-full p-2 border border-blue-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
+          </div>
+          <button
+            onclick="calculateAbsolutePressure()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-300 mb-4"
+          >
+            Hitung Tekanan Mutlak
+          </button>
+          <div
+            class="p-4 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg text-center border border-blue-200 shadow-inner"
+          >
+            <p class="text-sm font-medium text-blue-800 mb-1">
+              Hasil Perhitungan:
+            </p>
+            <p id="absolutePressure" class="text-xl font-bold text-blue-900">
+              -
+            </p>
+            <div class="mt-2 text-xs text-blue-600">
+              <span id="pressureComparison"></span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <section class="section-card p-6 mt-8">
+        <h2 class="text-2xl font-semibold mb-4 text-blue-800">
+          Ringkasan Konsep
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 bg-blue-50 rounded-lg">
+            <h3 class="font-semibold text-blue-800 mb-2">
+              Tekanan Hidrostatis
+            </h3>
+            <ul class="list-disc pl-5 text-sm">
+              <li>Bergantung pada kedalaman</li>
+              <li>Tidak bergantung bentuk wadah</li>
+              <li>Sama besar pada kedalaman sama</li>
+              <li>Arah tekanan tegak lurus permukaan</li>
+            </ul>
+          </div>
+          <div class="p-4 bg-blue-50 rounded-lg">
+            <h3 class="font-semibold text-blue-800 mb-2">Tekanan Atmosfer</h3>
+            <ul class="list-disc pl-5 text-sm">
+              <li>Diakibatkan oleh berat lapisan udara</li>
+              <li>Berkurang seiring ketinggian</li>
+              <li>Terukur dengan barometer</li>
+              <li>Standar 1 atm = 101325 Pa</li>
+            </ul>
+          </div>
+          <div class="p-4 bg-blue-50 rounded-lg">
+            <h3 class="font-semibold text-blue-800 mb-2">Tekanan Mutlak</h3>
+            <ul class="list-disc pl-5 text-sm">
+              <li>Jumlah tekanan atmosfer + hidrostatis</li>
+              <li>Digunakan dalam perhitungan fisika</li>
+              <li>Sering dibandingkan dengan tekanan vakum</li>
+              <li>Basis tekanan absolut adalah nol mutlak</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-12 text-center text-sm text-blue-700">
+        <p>© 2025 honsakhoirunnisa</p>
+        <p class="mt-2">
+          Sumber Gambar: Original Creation - Illustrative Diagrams
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // Tekanan Hidrostatis Calculation
+      function calculateHydrostaticPressure() {
+        const depth = parseFloat(document.getElementById("depthSlider").value);
+        const rho = 1000; // kg/m³ (air)
+        const g = 9.8; // m/s²
+        const pressure = rho * g * depth;
+
+        document.getElementById(
+          "pressureDisplay"
+        ).textContent = `Tekanan pada kedalaman ${depth} m = ${pressure.toFixed(
+          2
+        )} Pa`;
+
+        // Update visual indicator
+        const depthIndicator = document.querySelector(".depth-indicator");
+        depthIndicator.style.height = `${depth * 0.9}%`;
+        depthIndicator.style.transition = "height 0.5s ease";
+
+        // Add 3 pressure dots at different depths
+        clearPressureDots();
+        addPressureDot(0.2 * depth, "#22d3ee"); // Blue
+        addPressureDot(0.5 * depth, "#3b82f6"); // Darker blue
+        addPressureDot(0.8 * depth, "#1d4ed8"); // Deep blue
+      }
+
+      function addPressureDot(depthPercent, color) {
+        const container = document.querySelector(".interactive-circle");
+        const dot = document.createElement("div");
+        dot.className = "pressure-dot";
+        dot.style.backgroundColor = color;
+        dot.style.bottom = `${depthPercent}%`;
+        dot.style.left = "50%";
+        container.appendChild(dot);
+      }
+
+      function clearPressureDots() {
+        const dots = document.querySelectorAll(".pressure-dot");
+        dots.forEach((dot) => dot.remove());
+      }
+
+      // Tekanan Atmosfer Calculation
+      const altitudeSlider = document.getElementById("altitudeSlider");
+      altitudeSlider.addEventListener("input", function () {
+        const altitude = parseFloat(this.value);
+        document.getElementById("altitudeValue").textContent = altitude;
+
+        // Simulate pressure decrease with altitude
+        const pressure = 101325 * Math.exp(-altitude / 8.5); // Simple approximation
+        document.getElementById("atmPressure").textContent =
+          Math.round(pressure);
+
+        // Update visual pointer
+        const pointer = document.getElementById("atmPointer");
+        pointer.style.bottom = `${(altitude / 20) * 100}%`;
+      });
+
+      // Tekanan Mutlak Calculation
+      function calculateAbsolutePressure() {
+        const atmPressure = parseFloat(
+          document.getElementById("atmInput").value
+        );
+        const depth = parseFloat(document.getElementById("depthInput").value);
+        const density = parseFloat(
+          document.getElementById("densityInput").value
+        );
+        const g = 9.8; // m/s²
+
+        if (isNaN(atmPressure) || isNaN(depth) || isNaN(density)) {
+          alert("Mohon masukkan semua nilai dengan benar!");
+          return;
+        }
+
+        const hydrostaticPressure = density * g * depth;
+        const absolutePressure = atmPressure + hydrostaticPressure;
+
+        document.getElementById(
+          "absolutePressure"
+        ).textContent = `${absolutePressure.toFixed(2)} Pa (≈ ${(
+          absolutePressure / 101325
+        ).toFixed(2)} atm)`;
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        calculateHydrostaticPressure();
+        altitudeSlider.dispatchEvent(new Event("input"));
+      });
+    </script>
+  </body>
+</html>

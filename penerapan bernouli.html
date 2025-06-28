@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi Fluida Dinamis: Hukum Bernoulli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f0f8ff;
+        color: #1e3a8a;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      }
+
+      .formula-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 128, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .formula-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 128, 0.2);
+      }
+
+      .application-card {
+        background: white;
+        border-left: 5px solid #3b82f6;
+        transition: all 0.3s ease;
+      }
+
+      .application-card:hover {
+        transform: translateX(5px);
+      }
+
+      #bernoulliSimulation {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .katex-equation {
+        font-size: 1.4rem;
+        background: rgba(59, 130, 246, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+      }
+
+      .pilot-tube {
+        position: relative;
+        height: 300px;
+        margin: 2rem auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero text-white py-12 px-4 md:px-0">
+      <div class="container mx-auto max-w-6xl px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Hukum Bernoulli</h1>
+            <p class="text-xl mb-6 text-blue-100">
+              Penerapan Prinsip Fisika dalam Fluida Dinamis
+            </p>
+            <a
+              href="index.html"
+              class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition duration-300 inline-block"
+            >
+              Pelajari Sekarang
+            </a>
+            <a href="index.html"> <button type="button">kembali</button>></a>
+          </div>
+          <div class="md:w-1/2">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2d94c966-5594-4610-844f-e65612df5b2c.png"
+              alt="Ilustrasi fluida yang mengalir dalam pipa dengan variasi diameter menunjukkan efek Bernoulli"
+              class="rounded-xl shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto max-w-6xl px-4 py-12" id="materi">
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-6 text-center">
+          Pengertian Fluida Dinamis
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300"
+          >
+            <h3 class="text-xl font-semibold mb-3 text-blue-600">
+              Karakteristik
+            </h3>
+            <p>
+              Fluida dinamis adalah fluida (cair atau gas) yang bergerak dengan
+              kecepatan tertentu membentuk aliran garis-garis arus.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300"
+          >
+            <h3 class="text-xl font-semibold mb-3 text-blue-600">
+              Asumsi Dasar
+            </h3>
+            <p>
+              Dalam mempelajari fluida dinamis, kita membuat beberapa asumsi
+              penyederhanaan seperti fluida tidak termampatkan dan aliran tanpa
+              gesekan.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300"
+          >
+            <h3 class="text-xl font-semibold mb-3 text-blue-600">
+              Jenis Aliran
+            </h3>
+            <p>
+              Terdapat dua jenis aliran: laminer (berlapis) dan turbulen
+              (kacau). Hukum Bernoulli berlaku untuk aliran laminer.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16" id="bernoulli">
+        <h2 class="text-3xl font-bold mb-6 text-center">Persamaan Bernoulli</h2>
+        <div class="formula-card p-6 md:p-8 max-w-4xl mx-auto">
+          <div class="katex-equation text-center">P + ½ρv² + ρgh = konstan</div>
+          <div class="grid md:grid-cols-2 gap-6 mt-4">
+            <div>
+              <h3 class="text-xl font-semibold mb-3">Keterangan:</h3>
+              <ul class="space-y-2">
+                <li><strong>P</strong>: Tekanan fluida (Pa)</li>
+                <li><strong>ρ</strong>: Massa jenis fluida (kg/m³)</li>
+                <li><strong>v</strong>: Kecepatan aliran (m/s)</li>
+                <li><strong>g</strong>: Percepatan gravitasi (9.8 m/s²)</li>
+                <li><strong>h</strong>: Ketinggian (m)</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3">Interpretasi:</h3>
+              <p>
+                Persamaan Bernoulli adalah bentuk hukum kekekalan energi untuk
+                fluida yang mengalir. Setiap suku merepresentasikan:
+              </p>
+              <ul class="space-y-2 mt-2">
+                <li>P: Energi tekanan</li>
+                <li>½ρv²: Energi kinetik</li>
+                <li>ρgh: Energi potensial</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-6 text-center">
+          Visualisasi Hukum Bernoulli
+        </h2>
+        <div class="bg-white rounded-xl p-6 shadow-md" id="bernoulliSimulation">
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-2/3">
+              <canvas id="pressureChart" height="300"></canvas>
+            </div>
+            <div class="md:w-1/3 p-4">
+              <h3 class="text-xl font-semibold mb-3">Parameter Simulasi</h3>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium mb-1"
+                    >Kecepatan (v₁):
+                    <span id="velocityValue1">2.0</span> m/s</label
+                  >
+                  <input
+                    type="range"
+                    id="velocityInput1"
+                    min="0.5"
+                    max="5"
+                    step="0.1"
+                    value="2.0"
+                    class="w-full"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1"
+                    >Diameter Pipa (D₂):
+                    <span id="diameterValue">0.5</span> D₁</label
+                  >
+                  <input
+                    type="range"
+                    id="diameterInput"
+                    min="0.3"
+                    max="1.5"
+                    step="0.1"
+                    value="0.5"
+                    class="w-full"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1"
+                    >Tinggi (h): <span id="heightValue">0.5</span> m</label
+                  >
+                  <input
+                    type="range"
+                    id="heightInput"
+                    min="0"
+                    max="2"
+                    step="0.1"
+                    value="0.5"
+                    class="w-full"
+                  />
+                </div>
+                <button
+                  id="resetBtn"
+                  class="bg-blue-100 text-blue-600 px-4 py-2 rounded hover:bg-blue-200 transition"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-6 text-center">
+          Penerapan dalam Kehidupan
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="application-card p-6 rounded-r-lg">
+            <div class="flex items-start mb-4">
+              <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">Sayap Pesawat Terbang</h3>
+                <p class="text-gray-600 mt-1">
+                  Bentuk aerodinamis sayap menyebabkan udara di atas bergerak
+                  lebih cepat sehingga tekanan di atas sayap lebih kecil
+                  daripada di bawah sayap, menghasilkan gaya angkat.
+                </p>
+              </div>
+            </div>
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d9463938-61f7-445e-a2fa-6b535fe1389b.png"
+              alt="Ilustrasi penampang sayap pesawat dengan aliran udara dan distribusi tekanan menunjukkan efek Bernoulli"
+              class="rounded-lg mt-4 w-full"
+            />
+          </div>
+
+          <div class="application-card p-6 rounded-r-lg">
+            <div class="flex items-start mb-4">
+              <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">Venturimeter</h3>
+                <p class="text-gray-600 mt-1">
+                  Alat untuk mengukur laju aliran fluida dalam pipa dengan
+                  memanfaatkan perbedaan tekanan di bagian pipa yang berbeda
+                  diameter.
+                </p>
+              </div>
+            </div>
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/31b41a99-2fb4-47f4-a2e5-56ba01395542.png"
+              alt="Diagram venturimeter dengan pipa menyempit di bagian tengah menunjukkan pengukuran tekanan diferensial"
+              class="rounded-lg mt-4 w-full"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-6 text-center">
+          Contoh Soal dan Penyelesaian
+        </h2>
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-3">Soal 1:</h3>
+            <p>
+              Air mengalir melalui pipa dengan diameter 8 cm pada kecepatan 3
+              m/s dan tekanan 12300 Pa. Jika pipa menyempit menjadi diameter 4
+              cm dan ketinggiannya naik 1.2 m, hitung tekanan air di bagian yang
+              sempit!
+            </p>
+            <button
+              onclick="toggleSolution(1)"
+              class="bg-blue-100 text-blue-600 px-4 py-2 rounded mt-3 hover:bg-blue-200 transition inline-block"
+            >
+              Tampilkan Solusi
+            </button>
+            <div id="solution1" class="mt-4 hidden p-4 bg-blue-50 rounded-lg">
+              <h4 class="font-semibold mb-2">Penyelesaian:</h4>
+              <p>Menggunakan persamaan kontinuitas dan Bernoulli:</p>
+              <ol class="list-decimal pl-5 space-y-2">
+                <li>
+                  Hitung kecepatan di bagian sempit (v₂) menggunakan A₁v₁ = A₂v₂
+                </li>
+                <li>
+                  Masukkan nilai ke persamaan Bernoulli: P₁ + ½ρv₁² + ρgh₁ = P₂
+                  + ½ρv₂² + ρgh₂
+                </li>
+                <li>Substitusi nilai yang diketahui dan selesaikan untuk P₂</li>
+                <li>Hasil akhir: P₂ ≈ 9230 Pa</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-3">Soal 2:</h3>
+            <p>
+              Sebuah pesawat memiliki luas penampang sayap 50 m². Jika kecepatan
+              udara di atas sayap 310 m/s dan di bawah sayap 300 m/s, hitung
+              gaya angkat yang dihasilkan! (ρ udara = 1.2 kg/m³)
+            </p>
+            <button
+              onclick="toggleSolution(2)"
+              class="bg-blue-100 text-blue-600 px-4 py-2 rounded mt-3 hover:bg-blue-200 transition inline-block"
+            >
+              Tampilkan Solusi
+            </button>
+            <div id="solution2" class="mt-4 hidden p-4 bg-blue-50 rounded-lg">
+              <h4 class="font-semibold mb-2">Penyelesaian:</h4>
+              <p>
+                Menggunakan prinsip Bernoulli untuk menghitung perbedaan
+                tekanan:
+              </p>
+              <ol class="list-decimal pl-5 space-y-2">
+                <li>
+                  P₁ + ½ρv₁² = P₂ + ½ρv₂² (abaikan ketinggian karena kecil)
+                </li>
+                <li>ΔP = P₂ - P₁ = ½ρ(v₁² - v₂²)</li>
+                <li>F = ΔP × A = ½ρ(v₁² - v₂²) × A</li>
+                <li>Substitusi nilai: F ≈ 183,000 N atau 18.6 ton</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-3">Kalkulator Bernoulli</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Tekanan 1 (P₁, Pa)</label
+                >
+                <input
+                  type="number"
+                  id="pressure1"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Kecepatan 1 (v₁, m/s)</label
+                >
+                <input
+                  type="number"
+                  id="velocity1"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Ketinggian 1 (h₁, m)</label
+                >
+                <input
+                  type="number"
+                  id="height1"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Tekanan 2 (P₂, Pa)</label
+                >
+                <input
+                  type="number"
+                  id="pressure2"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Kecepatan 2 (v₂, m/s)</label
+                >
+                <input
+                  type="number"
+                  id="velocity2"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1"
+                  >Ketinggian 2 (h₂, m)</label
+                >
+                <input
+                  type="number"
+                  id="height2"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+            </div>
+            <button
+              onclick="calculateBernoulli()"
+              class="bg-blue-600 text-white px-6 py-2 rounded-lg mt-4 hover:bg-blue-700 transition"
+            >
+              Hitung Variabel yang Kosong
+            </button>
+            <div
+              id="calculationResult"
+              class="mt-4 p-4 bg-blue-50 rounded-lg hidden"
+            ></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-blue-900 text-white py-8">
+      <div class="container mx-auto max-w-6xl px-4">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold mb-4">Materi Fluida Dinamis</h2>
+          <p class="mb-6">
+            Hukum Bernoulli dan Penerapannya dalam Kehidupan Sehari-hari
+          </p>
+          <p class="text-blue-300">© 2025 honsakhoirunnisa</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Inisialisasi grafik simulasi Bernoulli
+      function initBernoulliSimulation() {
+        const ctx = document.getElementById("pressureChart").getContext("2d");
+        const chart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: ["Posisi 1", "Penyempitan", "Posisi 2"],
+            datasets: [
+              {
+                label: "Tekanan",
+                data: [100, 80, 110],
+                borderColor: "#3b82f6",
+                backgroundColor: "rgba(59, 130, 246, 0.1)",
+                borderWidth: 2,
+                tension: 0.3,
+                fill: true,
+                yAxisID: "y",
+              },
+              {
+                label: "Kecepatan",
+                data: [2, 5, 3],
+                borderColor: "#10b981",
+                backgroundColor: "rgba(16, 185, 129, 0.1)",
+                borderWidth: 2,
+                tension: 0.3,
+                yAxisID: "y1",
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            interaction: {
+              mode: "index",
+              intersect: false,
+            },
+            scales: {
+              y: {
+                type: "linear",
+                display: true,
+                position: "left",
+                title: {
+                  display: true,
+                  text: "Tekanan (Pa)",
+                },
+              },
+              y1: {
+                type: "linear",
+                display: true,
+                position: "right",
+                title: {
+                  display: true,
+                  text: "Kecepatan (m/s)",
+                },
+                grid: {
+                  drawOnChartArea: false,
+                },
+              },
+            },
+            plugins: {
+              title: {
+                display: true,
+                text: "Simulasi Aliran dalam Pipa",
+              },
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    if (context.dataset.label === "Tekanan") {
+                      return `Tekanan: ${context.parsed.y} Pa`;
+                    } else {
+                      return `Kecepatan: ${context.parsed.y} m/s`;
+                    }
+                  },
+                },
+              },
+            },
+          },
+        });
+
+        // Fungsi untuk memperbarui grafik berdasarkan input
+        function updateChart() {
+          const v1 = parseFloat(
+            document.getElementById("velocityInput1").value
+          );
+          const diameterRatio = parseFloat(
+            document.getElementById("diameterInput").value
+          );
+          const h = parseFloat(document.getElementById("heightInput").value);
+
+          // Posisi 1
+          const p1 = 100;
+          const v_at_1 = v1;
+
+          // Penyempitan (posisi 2)
+          // Menggunakan persamaan kontinuitas A1v1 = A2v2
+          // A ~ d² => v2 = v1*(d1²/d2²) = v1*(1/diameterRatio²)
+          const v_at_2 = v1 / (diameterRatio * diameterRatio);
+          const p_at_2 =
+            p1 +
+            0.5 * 1000 * (v_at_1 * v_at_1 - v_at_2 * v_at_2) -
+            1000 * 9.8 * h;
+
+          // Posisi 3 (setelah penyempitan, diameter kembali normal)
+          const v_at_3 = v1; // Asumsi diameter kembali normal
+          const p_at_3 = p1 - 1000 * 9.8 * h;
+
+          chart.data.datasets[0].data = [p1, p_at_2, p_at_3];
+          chart.data.datasets[1].data = [v_at_1, v_at_2, v_at_3];
+          chart.update();
+        }
+
+        // Event listeners untuk slider
+        document
+          .getElementById("velocityInput1")
+          .addEventListener("input", function () {
+            document.getElementById("velocityValue1").textContent = this.value;
+            updateChart();
+          });
+
+        document
+          .getElementById("diameterInput")
+          .addEventListener("input", function () {
+            document.getElementById("diameterValue").textContent = this.value;
+            updateChart();
+          });
+
+        document
+          .getElementById("heightInput")
+          .addEventListener("input", function () {
+            document.getElementById("heightValue").textContent = this.value;
+            updateChart();
+          });
+
+        document
+          .getElementById("resetBtn")
+          .addEventListener("click", function () {
+            document.getElementById("velocityInput1").value = 2.0;
+            document.getElementById("velocityValue1").textContent = "2.0";
+            document.getElementById("diameterInput").value = 0.5;
+            document.getElementById("diameterValue").textContent = "0.5";
+            document.getElementById("heightInput").value = 0.5;
+            document.getElementById("heightValue").textContent = "0.5";
+            updateChart();
+          });
+
+        // Inisialisasi awal
+        updateChart();
+      }
+
+      // Fungsi untuk toggle solusi soal
+      function toggleSolution(num) {
+        const solution = document.getElementById(`solution${num}`);
+        solution.classList.toggle("hidden");
+      }
+
+      // Fungsi untuk kalkulator Bernoulli
+      function calculateBernoulli() {
+        // Massa jenis air sebagai default (kg/m³)
+        const rho = 1000;
+        // Percepatan gravitasi (m/s²)
+        const g = 9.8;
+
+        // Ambil nilai dari input
+        const p1 = parseFloat(document.getElementById("pressure1").value);
+        const v1 = parseFloat(document.getElementById("velocity1").value);
+        const h1 = parseFloat(document.getElementById("height1").value);
+        const p2 = parseFloat(document.getElementById("pressure2").value);
+        const v2 = parseFloat(document.getElementById("velocity2").value);
+        const h2 = parseFloat(document.getElementById("height2").value);
+
+        let result = "";
+
+        // Cari variabel yang kosong dan hitung
+        if (
+          isNaN(p1) &&
+          !isNaN(p2) &&
+          !isNaN(v1) &&
+          !isNaN(v2) &&
+          !isNaN(h1) &&
+          !isNaN(h2)
+        ) {
+          const calculated_p1 =
+            p2 + 0.5 * rho * (v2 * v2 - v1 * v1) + rho * g * (h2 - h1);
+          result = `P₁ = ${calculated_p1.toFixed(2)} Pa`;
+        } else if (
+          isNaN(p2) &&
+          !isNaN(p1) &&
+          !isNaN(v1) &&
+          !isNaN(v2) &&
+          !isNaN(h1) &&
+          !isNaN(h2)
+        ) {
+          const calculated_p2 =
+            p1 + 0.5 * rho * (v1 * v1 - v2 * v2) + rho * g * (h1 - h2);
+          result = `P₂ = ${calculated_p2.toFixed(2)} Pa`;
+        } else if (
+          isNaN(v1) &&
+          !isNaN(p1) &&
+          !isNaN(p2) &&
+          !isNaN(v2) &&
+          !isNaN(h1) &&
+          !isNaN(h2)
+        ) {
+          // Kita memerlukan luas penampang untuk menghitung kecepatan dari persamaan kontinuitas
+          result =
+            "Untuk menghitung v₁, kita membutuhkan informasi luas penampang pipa";
+        } else if (
+          isNaN(v2) &&
+          !isNaN(p1) &&
+          !isNaN(p2) &&
+          !isNaN(v1) &&
+          !isNaN(h1) &&
+          !isNaN(h2)
+        ) {
+          // Kita memerlukan luas penampang untuk menghitung kecepatan dari persamaan kontinuitas
+          result =
+            "Untuk menghitung v₂, kita membutuhkan informasi luas penampang pipa";
+        } else if (
+          isNaN(h1) &&
+          !isNaN(p1) &&
+          !isNaN(p2) &&
+          !isNaN(v1) &&
+          !isNaN(v2) &&
+          !isNaN(h2)
+        ) {
+          const calculated_h1 =
+            h2 + (p2 - p1) / (rho * g) + (v2 * v2 - v1 * v1) / (2 * g);
+          result = `h₁ = ${calculated_h1.toFixed(2)} m`;
+        } else if (
+          isNaN(h2) &&
+          !isNaN(p1) &&
+          !isNaN(p2) &&
+          !isNaN(v1) &&
+          !isNaN(v2) &&
+          !isNaN(h1)
+        ) {
+          const calculated_h2 =
+            h1 + (p1 - p2) / (rho * g) + (v1 * v1 - v2 * v2) / (2 * g);
+          result = `h₂ = ${calculated_h2.toFixed(2)} m`;
+        } else {
+          result =
+            "Masukkan nilai untuk 5 variabel dan biarkan satu kosong untuk dihitung";
+        }
+
+        document.getElementById("calculationResult").textContent = result;
+        document.getElementById("calculationResult").classList.remove("hidden");
+      }
+
+      // Inisialisasi saat halaman dimuat
+      document.addEventListener("DOMContentLoaded", function () {
+        initBernoulliSimulation();
+      });
+    </script>
+  </body>
+</html>

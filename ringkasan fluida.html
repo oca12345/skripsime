@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi Pembelajaran Fluida</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .fluid-container {
+        background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .fluid-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+      .nav-button {
+        transition: all 0.3s ease;
+      }
+      .nav-button:hover {
+        transform: scale(1.05);
+      }
+      .flow-animation {
+        animation: flow 8s infinite linear;
+      }
+      @keyframes flow {
+        0% {
+          transform: translateX(-50px);
+        }
+        100% {
+          transform: translateX(0px);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-blue-800 mb-4">
+          Materi Pembelajaran Fisika: Fluida
+        </h1>
+        <p class="text-lg text-gray-600">
+          Memahami Sifat, Jenis, dan Aplikasi Fluida dalam Kehidupan Sehari-hari
+        </p>
+      </header>
+
+      <div class="flex justify-center space-x-4 mb-12">
+        <button
+          class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg"
+          onclick="showSection('definisi')"
+        >
+          Definisi
+        </button>
+        <button
+          class="nav-button bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-lg"
+          onclick="showSection('jenis')"
+        >
+          Jenis Fluida
+        </button>
+        <button
+          class="nav-button bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-lg"
+          onclick="showSection('hukum')"
+        >
+          Hukum Fluida
+        </button>
+        <button
+          class="nav-button bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg"
+          onclick="showSection('aplikasi')"
+        >
+          Aplikasi
+        </button>
+      </div>
+
+      <div class="fluid-container p-8 mb-12">
+        <section id="definisi-section" class="section-content">
+          <h2 class="text-3xl font-bold text-blue-700 mb-6">Apa Itu Fluida?</h2>
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <p class="text-gray-700 mb-4">
+                Fluida adalah zat yang dapat mengalir dan mengambil bentuk
+                wadahnya. Umumnya mencakup cairan dan gas.
+              </p>
+              <p class="text-gray-700 mb-4">
+                Fluida memiliki kemampuan untuk mengalir karena gaya antara
+                molekulnya relatif lemah dibanding zat padat, sehingga
+                molekul-molekulnya dapat bergerak bebas.
+              </p>
+              <ul class="list-disc pl-6 mb-4 text-gray-700">
+                <li>Tidak memiliki bentuk tetap (menyesuaikan wadah)</li>
+                <li>Dapat mengalir dari tempat tinggi ke rendah</li>
+                <li>Memiliki viskositas (kekentalan)</li>
+                <li>
+                  Mengikuti hukum-hukum fluida seperti Pascal dan Archimedes
+                </li>
+              </ul>
+            </div>
+            <div class="flex justify-center">
+              <div
+                class="relative w-full max-w-md h-64 bg-white rounded-lg overflow-hidden shadow-md flex items-center justify-center"
+              >
+                <div class="absolute bottom-0 w-full h-32 bg-blue-200">
+                  <div
+                    class="flow-animation absolute top-0 left-0 w-full h-full flex"
+                  >
+                    <div
+                      class="w-16 h-16 bg-blue-400 rounded-full mr-4 opacity-90"
+                    ></div>
+                    <div
+                      class="w-12 h-12 bg-blue-300 rounded-full mr-4 opacity-80"
+                    ></div>
+                    <div
+                      class="w-10 h-10 bg-blue-500 rounded-full mr-4 opacity-90"
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  class="absolute bottom-32 w-3/4 h-12 bg-transparent border-2 border-blue-300 rounded-full"
+                ></div>
+                <div class="text-center z-10">
+                  <p class="text-blue-700 font-bold">Visualisasi Fluida</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="jenis-section" class="section-content hidden">
+          <h2 class="text-3xl font-bold text-teal-700 mb-6">
+            Jenis-Jenis Fluida
+          </h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <h3 class="text-xl font-bold text-teal-600 mb-3">
+                1. Fluida Ideal
+              </h3>
+              <p class="text-gray-700 mb-3">
+                Fluida yang bersifat tidak kompresibel (volume tetap) dan tidak
+                memiliki viskositas (tidak kental).
+              </p>
+              <div class="flex justify-center mb-4">
+                <svg width="200" height="100" viewBox="0 0 200 100">
+                  <path
+                    d="M20,50 Q100,30 180,50"
+                    stroke="#4FD1C5"
+                    stroke-width="3"
+                    fill="none"
+                  />
+                  <circle cx="20" cy="50" r="5" fill="#38B2AC" />
+                  <circle cx="60" cy="45" r="5" fill="#38B2AC" />
+                  <circle cx="100" cy="40" r="5" fill="#38B2AC" />
+                  <circle cx="140" cy="45" r="5" fill="#38B2AC" />
+                  <circle cx="180" cy="50" r="5" fill="#38B2AC" />
+                  <text
+                    x="100"
+                    y="30"
+                    text-anchor="middle"
+                    font-size="12"
+                    fill="#285E61"
+                  >
+                    Aliran Laminar Fluida Ideal
+                  </text>
+                </svg>
+              </div>
+              <ul class="list-disc pl-6 text-gray-700">
+                <li>Tidak ada gesekan antar partikel</li>
+                <li>Aliran laminar (teratur)</li>
+                <li>Digunakan dalam analisis teoretis</li>
+              </ul>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <h3 class="text-xl font-bold text-teal-600 mb-3">
+                2. Fluida Nyata
+              </h3>
+              <p class="text-gray-700 mb-3">
+                Fluida yang memiliki sifat viskositas (kekentalan) dan
+                kompresibilitas dalam kasus tertentu.
+              </p>
+              <div class="flex justify-center mb-4">
+                <svg width="200" height="100" viewBox="0 0 200 100">
+                  <path
+                    d="M20,50 C60,20 100,70 140,40 C160,25 180,60 180,50"
+                    stroke="#4C51BF"
+                    stroke-width="3"
+                    fill="none"
+                  />
+                  <circle cx="20" cy="50" r="5" fill="#667EEA" />
+                  <circle cx="60" cy="35" r="5" fill="#667EEA" />
+                  <circle cx="100" cy="60" r="5" fill="#667EEA" />
+                  <circle cx="140" cy="40" r="5" fill="#667EEA" />
+                  <circle cx="180" cy="50" r="5" fill="#667EEA" />
+                  <text
+                    x="100"
+                    y="30"
+                    text-anchor="middle"
+                    font-size="12"
+                    fill="#434190"
+                  >
+                    Aliran Turbulen Fluida Nyata
+                  </text>
+                </svg>
+              </div>
+              <ul class="list-disc pl-6 text-gray-700">
+                <li>Mengalami gesekan internal</li>
+                <li>Aliran turbulen (tidak teratur)</li>
+                <li>Contoh: air, minyak, udara</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="hukum-section" class="section-content hidden">
+          <h2 class="text-3xl font-bold text-purple-700 mb-6">
+            Hukum-Hukum Fluida
+          </h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <h3 class="text-xl font-bold text-purple-600 mb-3">
+                Hukum Pascal
+              </h3>
+              <p class="text-gray-700 mb-4">
+                "Tekanan yang diberikan pada fluida dalam ruang tertutup akan
+                diteruskan sama besar ke segala arah."
+              </p>
+              <div class="flex justify-center mb-4">
+                <svg width="150" height="150" viewBox="0 0 150 150">
+                  <rect
+                    x="30"
+                    y="50"
+                    width="90"
+                    height="60"
+                    fill="#D1D5DB"
+                    stroke="#6B7280"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="40"
+                    y="60"
+                    width="70"
+                    height="40"
+                    fill="#D1F4E6"
+                    stroke="#0E9C6B"
+                    stroke-width="2"
+                  />
+                  <circle cx="75" cy="80" r="15" fill="#3B82F6" />
+                  <path
+                    d="M75,65 L75,35 M65,40 L85,40"
+                    stroke="#3B82F6"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M75,95 L75,125 M65,120 L85,120"
+                    stroke="#3B82F6"
+                    stroke-width="2"
+                  />
+                  <text
+                    x="75"
+                    y="25"
+                    text-anchor="middle"
+                    font-size="10"
+                    fill="#1E3A8A"
+                  >
+                    F
+                  </text>
+                  <text
+                    x="75"
+                    y="140"
+                    text-anchor="middle"
+                    font-size="10"
+                    fill="#1E3A8A"
+                  >
+                    F
+                  </text>
+                </svg>
+              </div>
+              <p class="text-sm text-gray-600">
+                Digunakan dalam sistem hidrolik seperti rem mobil dan dongkrak
+                hidrolik.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <h3 class="text-xl font-bold text-purple-600 mb-3">
+                Hukum Archimedes
+              </h3>
+              <p class="text-gray-700 mb-4">
+                "Gaya apung yang bekerja pada benda yang tercelup sama dengan
+                berat fluida yang dipindahkan."
+              </p>
+              <div class="flex justify-center mb-4">
+                <svg width="150" height="150" viewBox="0 0 150 150">
+                  <rect
+                    x="30"
+                    y="60"
+                    width="90"
+                    height="60"
+                    fill="#BFDBFE"
+                    stroke="#3B82F6"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M60,70 L60,40 L90,40 L90,70"
+                    fill="#93C5FD"
+                    stroke="#1D4ED8"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M60,70 L60,90 L70,90 L70,70"
+                    fill="#93C5FD"
+                    stroke="#1D4ED8"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M80,70 L80,90 L90,90 L90,70"
+                    fill="#93C5FD"
+                    stroke="#1D4ED8"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M30,90 L120,90"
+                    stroke="#1E40AF"
+                    stroke-width="2"
+                    stroke-dasharray="5,5"
+                  />
+                  <text
+                    x="75"
+                    y="115"
+                    text-anchor="middle"
+                    font-size="10"
+                    fill="#1E3A8A"
+                  >
+                    Fapung = ρ.g.V
+                  </text>
+                </svg>
+              </div>
+              <p class="text-sm text-gray-600">
+                Menjelaskan mengapa kapal laut bisa mengapung meskipun terbuat
+                dari baja.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <h3 class="text-xl font-bold text-purple-600 mb-3">
+                Persamaan Bernoulli
+              </h3>
+              <p class="text-gray-700 mb-4">
+                "Dalam aliran fluida ideal, jumlah tekanan, energi kinetik per
+                volume, dan energi potensial per volume adalah konstan."
+              </p>
+              <div class="flex justify-center mb-4">
+                <svg width="150" height="150" viewBox="0 0 150 150">
+                  <path
+                    d="M30,80 L50,50 L100,70 L120,40"
+                    stroke="#7C3AED"
+                    stroke-width="3"
+                    fill="none"
+                  />
+                  <circle cx="30" cy="80" r="3" fill="#7C3AED" />
+                  <circle cx="50" cy="50" r="3" fill="#7C3AED" />
+                  <circle cx="100" cy="70" r="3" fill="#7C3AED" />
+                  <circle cx="120" cy="40" r="3" fill="#7C3AED" />
+                  <text
+                    x="75"
+                    y="30"
+                    text-anchor="middle"
+                    font-size="10"
+                    fill="#5B21B6"
+                  >
+                    P+½ρv²+ρgh = konstan
+                  </text>
+                  <line
+                    x1="50"
+                    y1="50"
+                    x2="60"
+                    y2="45"
+                    stroke="#7C3AED"
+                    stroke-width="2"
+                  />
+                  <line
+                    x1="100"
+                    y1="70"
+                    x2="110"
+                    y2="65"
+                    stroke="#7C3AED"
+                    stroke-width="2"
+                  />
+                  <text
+                    x="130"
+                    y="45"
+                    text-anchor="end"
+                    font-size="10"
+                    fill="#5B21B6"
+                  >
+                    v↑ P↓
+                  </text>
+                </svg>
+              </div>
+              <p class="text-sm text-gray-600">
+                Dasar kerja sayap pesawat dan alat-alat pengukur aliran fluida.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="aplikasi-section" class="section-content hidden">
+          <h2 class="text-3xl font-bold text-yellow-700 mb-6">
+            Aplikasi Fluida dalam Kehidupan
+          </h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <h3 class="text-xl font-bold text-yellow-600 mb-3">
+                1. Sistem Hidrolik
+              </h3>
+              <div class="flex items-center mb-4">
+                <div class="w-1/2 pr-4">
+                  <svg width="100%" height="120" viewBox="0 0 200 120">
+                    <rect
+                      x="20"
+                      y="30"
+                      width="160"
+                      height="60"
+                      rx="5"
+                      fill="#E5E7EB"
+                      stroke="#6B7280"
+                      stroke-width="2"
+                    />
+                    <rect x="30" y="40" width="40" height="20" fill="#F9A8D4" />
+                    <rect x="85" y="40" width="30" height="20" fill="#93C5FD" />
+                    <rect
+                      x="130"
+                      y="40"
+                      width="40"
+                      height="20"
+                      fill="#F9A8D4"
+                    />
+                    <path
+                      d="M70,50 L85,50 M115,50 L130,50"
+                      stroke="#111827"
+                      stroke-width="3"
+                    />
+                    <circle cx="70" cy="50" r="4" fill="#1E40AF" />
+                    <circle cx="115" cy="50" r="4" fill="#1E40AF" />
+                    <text
+                      x="100"
+                      y="20"
+                      text-anchor="middle"
+                      font-size="10"
+                      fill="#92400E"
+                    >
+                      Dongkrak Hidrolik
+                    </text>
+                  </svg>
+                </div>
+                <div class="w-1/2">
+                  <p class="text-gray-700">
+                    Menggunakan hukum Pascal untuk memperbesar gaya dengan
+                    perbedaan luas penampang piston.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <h3 class="text-xl font-bold text-yellow-600 mb-3">
+                2. Aerodinamika Pesawat
+              </h3>
+              <div class="flex items-center mb-4">
+                <div class="w-1/2 pr-4">
+                  <svg width="100%" height="120" viewBox="0 0 200 120">
+                    <path
+                      d="M30,60 Q40,30 80,40 Q120,50 170,40"
+                      fill="#BFDBFE"
+                      stroke="#3B82F6"
+                      stroke-width="1"
+                    />
+                    <path
+                      d="M30,60 Q40,90 80,80 Q120,70 170,80"
+                      fill="#BFDBFE"
+                      stroke="#3B82F6"
+                      stroke-width="1"
+                    />
+                    <path
+                      d="M80,40 L80,80 L100,80 L100,40 Z"
+                      fill="#93C5FD"
+                      stroke="#1D4ED8"
+                      stroke-width="2"
+                    />
+                    <text
+                      x="100"
+                      y="20"
+                      text-anchor="middle"
+                      font-size="10"
+                      fill="#92400E"
+                    >
+                      Sayap Pesawat
+                    </text>
+                  </svg>
+                </div>
+                <div class="w-1/2">
+                  <p class="text-gray-700">
+                    Prinsip Bernoulli menjelaskan bagaimana perbedaan kecepatan
+                    aliran udara di atas dan bawah sayap menghasilkan gaya
+                    angkat.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <script>
+        function showSection(sectionId) {
+          // Hide all sections
+          document.querySelectorAll(".section-content").forEach((section) => {
+            section.classList.add("hidden");
+          });
+          // Show the selected section
+          document
+            .getElementById(sectionId + "-section")
+            .classList.remove("hidden");
+        }
+
+        // Show the 'definisi' section by default on page load
+        document.addEventListener("DOMContentLoaded", () => {
+          showSection("definisi");
+        });
+      </script>
+    </div>
+  </body>
+</html>
