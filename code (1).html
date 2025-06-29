@@ -146,6 +146,32 @@
             padding: 20px;
             color: #666;
         }
+
+        /* Animasi untuk diagram */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .content-section {
+                padding: 15px;
+            }
+            
+            .diagram {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -156,13 +182,10 @@
     
     <div class="content-section">
         <h2>Pendahuluan</h2>
-    <a href="index.html" class="btn">Kembali ke Halaman Utama</a>
-        <p>Pernahkah Adik-adik melihat film Titanic? Film 
-yang cukup menyedot perhatian dunia karena mengangkat kisah nyata tentang tenggelamnya kapal Titanic. Titanic dikenal sebagai kapal mewah. Pelayarannya pada saat itu sangat dinantikan. Peristiwa tenggelam kapal terjadi 
-setelah kapal menabrak gunung es dan terjadi kebocoran.</p>
-Kapal yang semula berlayar tenang di lautan kemudian mengalami tabrakan dengan gunung es yang sedang mengapung sehingga mengakibatkan pelat lambung Titanic melengkung ke dalam di sejumlah tempat di sisi kanan kapal dan mengoyak lima dari enam belas kompartemen kedap airnya. Selama dua setengah jam Mengapa ada benda yang bisa tenggelam ketika kapal Titanic menabrak gunung es? Sebelum menabrakgunung es, mengapa kapal Titanic yang besar dan terbuat dari besi bisa mengapung di atas air? Jawaban dari pertanyaan di atas akan dijelaskan pada pokok bahasan ini yaitu Fluida Statis.
-
-<p>Fluida statis adalah cabang ilmu fisika yang mempelajari fluida (cairan dan gas) dalam keadaan diam (tidak mengalir). Konsep fluida statis sangat penting dalam berbagai aplikasi teknik dan kehidupan sehari-hari.</p>
+        <a href="index.html" class="btn">Kembali ke Halaman Utama</a>
+        <p>Pernahkah Adik-adik melihat film Titanic? Film yang cukup menyedot perhatian dunia karena mengangkat kisah nyata tentang tenggelamnya kapal Titanic. Titanic dikenal sebagai kapal mewah. Pelayarannya pada saat itu sangat dinantikan. Peristiwa tenggelam kapal terjadi setelah kapal menabrak gunung es dan terjadi kebocoran.</p>
+        <p>Kapal yang semula berlayar tenang di lautan kemudian mengalami tabrakan dengan gunung es yang sedang mengapung sehingga mengakibatkan pelat lambung Titanic melengkung ke dalam di sejumlah tempat di sisi kanan kapal dan mengoyak lima dari enam belas kompartemen kedap airnya. Selama dua setengah jam Mengapa ada benda yang bisa tenggelam ketika kapal Titanic menabrak gunung es? Sebelum menabrak gunung es, mengapa kapal Titanic yang besar dan terbuat dari besi bisa mengapung di atas air? Jawaban dari pertanyaan di atas akan dijelaskan pada pokok bahasan ini yaitu Fluida Statis.</p>
+        <p>Fluida statis adalah cabang ilmu fisika yang mempelajari fluida (cairan dan gas) dalam keadaan diam (tidak mengalir). Konsep fluida statis sangat penting dalam berbagai aplikasi teknik dan kehidupan sehari-hari.</p>
         <div class="important">
             <h3>Ciri-ciri Fluida Statis:</h3>
             <ul>
@@ -171,16 +194,14 @@ Kapal yang semula berlayar tenang di lautan kemudian mengalami tabrakan dengan g
                 <li>Mengikuti hukum-hukum fluida statis</li>
                 <li>Mengalami tegangan permukaan</li>
                 <li>Memiliki kapilaritas</li>
+                <li>Memiliki viskositas</li>
             </ul>
         </div>
     </div>
     
     <div class="content-section">
         <h2>Tekanan Hidrostatis</h2>
-        <p>Tekanan yang disebabkan oleh berat fluida itu sendiri pada kedalaman tertentu dari permukaan fluida
-Hukum utama hidrostatis menyatakan semua titik yang terletak pada suatu bidang datar dalam 
-satu jenis zat cair yang memiliki tekanan sama
-.</p>
+        <p>Tekanan yang disebabkan oleh berat fluida itu sendiri pada kedalaman tertentu dari permukaan fluida. Hukum utama hidrostatis menyatakan semua titik yang terletak pada suatu bidang datar dalam satu jenis zat cair yang memiliki tekanan sama.</p>
         
         <div class="formula">
             P = ρ × g × h
@@ -233,12 +254,7 @@ satu jenis zat cair yang memiliki tekanan sama
     
     <div class="content-section">
         <h2>Hukum Pascal</h2>
-        <p>"Tekanan yang diberikan pada fluida dalam ruang tertutup akan diteruskan sama besar ke segala arah.
-
-Hukum Pascal berbunyi: “Tekanan yang 
-diberikan kepada zat cair di dalam ruang tertutup diteruskan sama besar ke segala arah”. Blaise Pascal (1623 - 1662) seorang ilmuwan dari Perancis, yang telah mengemukakan Hukum Pascal di atas. 
-Nama “Pascal” juga digunakan sebagai satuan dari tekanan untuk menghargai jasa Blaise Pasca
-"</p>
+        <p>"Tekanan yang diberikan pada fluida dalam ruang tertutup akan diteruskan sama besar ke segala arah. Hukum Pascal berbunyi: "Tekanan yang diberikan kepada zat cair di dalam ruang tertutup diteruskan sama besar ke segala arah". Blaise Pascal (1623 - 1662) seorang ilmuwan dari Perancis, yang telah mengemukakan Hukum Pascal di atas. Nama "Pascal" juga digunakan sebagai satuan dari tekanan untuk menghargai jasa Blaise Pascal."</p>
         
         <div class="formula">
             F₁/A₁ = F₂/A₂
@@ -289,13 +305,7 @@ Nama “Pascal” juga digunakan sebagai satuan dari tekanan untuk menghargai ja
     
     <div class="content-section">
         <h2>Hukum Archimedes</h2>
-        <p>"Gaya apung yang bekerja pada benda yang tercelup dalam fluida sama dengan berat fluida yang dipindahkan oleh benda tersebut.
-Hukum Archimedes berbunyi: 
-“Setiap benda yang terendam seluruhnya atau sebagian di dalam fluida mendapat gaya apung berarah ke atas, yang besarnya adalah sama dengan berat fluida yang dipindahkan 
-oleh benda ini”. 
-Archimedes (287 – 212 SM) seorang ilmuwan dari Yunani, yang telah mengemukakan Hukum Archimedes di atas. Archimedes menemukan satu metode untukmenentukan volume 
-suatu objek yang memiliki bentuk tidak rata. 
-"</p>
+        <p>"Gaya apung yang bekerja pada benda yang tercelup dalam fluida sama dengan berat fluida yang dipindahkan oleh benda tersebut. Hukum Archimedes berbunyi: "Setiap benda yang terendam seluruhnya atau sebagian di dalam fluida mendapat gaya apung berarah ke atas, yang besarnya adalah sama dengan berat fluida yang dipindahkan oleh benda ini". Archimedes (287 - 212 SM) seorang ilmuwan dari Yunani, yang telah mengemukakan Hukum Archimedes di atas. Archimedes menemukan satu metode untuk menentukan volume suatu objek yang memiliki bentuk tidak rata."</p>
         
         <div class="formula">
             F<sub>a</sub> = ρ<sub>f</sub> × g × V<sub>tercelup</sub>
@@ -363,13 +373,343 @@ suatu objek yang memiliki bentuk tidak rata.
     </div>
     
     <div class="content-section">
-        <h2>Tegangan Permukaan dan Kapilaritas</h2>
-        
-        <h3>Tegangan Permukaan</h3>
-        <p>Kecenderungan permukaan fluida untuk menegang sehingga permukaannya seperti ditutupi oleh lapisan elastis.</p>
+        <h2>Tegangan Permukaan</h2>
+        <p>Tegangan permukaan adalah kecenderungan permukaan fluida untuk menegang sehingga permukaannya seperti ditutupi oleh lapisan elastis. Fenomena ini disebabkan oleh gaya tarik-menarik antara molekul-molekul fluida yang disebut gaya kohesi.</p>
         
         <div class="diagram">
-            <svg width="100%" height="200" viewBox="0 0 400 200">
+            <svg width="100%" height="250" viewBox="0 0 400 250">
                 <!-- Air dalam gelas -->
-                <path d="M100,50 Q150,30 200,50 Q250,30 300,50 L300,150 Q250,170 200,150 Q150,170 100,150 Z" fill="#4dabf7" opacity="0.6" strok
-             
+                <path d="M100,50 Q150,30 200,50 Q250,30 300,50 L300,150 Q250,170 200,150 Q150,170 100,150 Z" fill="#4dabf7" opacity="0.6" stroke="#333" stroke-width="2" />
+                
+                <!-- Molekul air -->
+                <circle cx="150" cy="100" r="5" fill="#007bff" class="floating" />
+                <circle cx="200" cy="100" r="5" fill="#007bff" class="floating" style="animation-delay: 0.5s" />
+                <circle cx="250" cy="100" r="5" fill="#007bff" class="floating" style="animation-delay: 1s" />
+                
+                <!-- Gaya kohesi -->
+                <path d="M150,100 L170,90" stroke="#e03131" stroke-width="1.5" stroke-dasharray="3,3" />
+                <path d="M200,100 L220,90" stroke="#e03131" stroke-width="1.5" stroke-dasharray="3,3" />
+                <path d="M250,100 L270,90" stroke="#e03131" stroke-width="1.5" stroke-dasharray="3,3" />
+                
+                <text x="200" y="40" font-size="12" fill="#333">Permukaan Air</text>
+                <text x="200" y="220" font-size="14" fill="#2c3e50">Tegangan Permukaan</text>
+            </svg>
+        </div>
+        
+        <div class="formula">
+            γ = F / L
+        </div>
+        
+        <p>Dimana:</p>
+        <ul>
+            <li><strong>γ</strong> = Tegangan permukaan (N/m)</li>
+            <li><strong>F</strong> = Gaya yang bekerja pada permukaan (N)</li>
+            <li><strong>L</strong> = Panjang garis sepanjang permukaan (m)</li>
+        </ul>
+        
+        <div class="example">
+            <h3>Contoh Fenomena Tegangan Permukaan:</h3>
+            <ul>
+                <li>Serangga air yang dapat berjalan di permukaan air</li>
+                <li>Tetesan air yang berbentuk bulat</li>
+                <li>Jarum yang dapat mengapung di permukaan air</li>
+                <li>Gelembung sabun yang stabil</li>
+            </ul>
+        </div>
+        
+        <div class="interactive">
+            <h3>Simulasi Tegangan Permukaan</h3>
+            <div id="surface-tension-demo" style="height: 200px; background-color: #e3f2fd; border-radius: 5px; position: relative; overflow: hidden;">
+                <div id="water-surface" style="height: 150px; background-color: #4dabf7; opacity: 0.6; position: relative;">
+                    <div id="insect" style="width: 30px; height: 20px; background-color: #333; border-radius: 50% 50% 0 0; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);"></div>
+                </div>
+            </div>
+            <button id="disturb-btn" class="btn" style="margin-top: 15px;">Ganggu Permukaan</button>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2>Kapilaritas</h2>
+        <p>Kapilaritas adalah fenomena naik atau turunnya fluida dalam tabung sempit (kapiler) akibat tegangan permukaan dan gaya adhesi antara fluida dan dinding tabung.</p>
+        
+        <div class="diagram">
+            <svg width="100%" height="300" viewBox="0 0 400 300">
+                <!-- Tabung kapiler -->
+                <rect x="150" y="50" width="20" height="200" fill="#e3f2fd" stroke="#333" stroke-width="2" />
+                <rect x="230" y="50" width="20" height="200" fill="#e3f2fd" stroke="#333" stroke-width="2" />
+                
+                <!-- Air dalam tabung -->
+                <path d="M150,250 Q160,230 170,250 L170,50 Q160,70 150,50 Z" fill="#4dabf7" opacity="0.6" />
+                <path d="M230,250 Q240,210 250,250 L250,50 Q240,90 230,50 Z" fill="#4dabf7" opacity="0.6" />
+                
+                <!-- Label -->
+                <text x="160" y="40" font-size="12" fill="#333">Tabung Lebar</text>
+                <text x="240" y="40" font-size="12" fill="#333">Tabung Sempit</text>
+                <text x="200" y="280" font-size="14" fill="#2c3e50">Kapilaritas</text>
+            </svg>
+        </div>
+        
+        <div class="formula">
+            h = (2γ cosθ) / (ρ g r)
+        </div>
+        
+        <p>Dimana:</p>
+        <ul>
+            <li><strong>h</strong> = Ketinggian fluida dalam kapiler (m)</li>
+            <li><strong>γ</strong> = Tegangan permukaan (N/m)</li>
+            <li><strong>θ</strong> = Sudut kontak antara fluida dan dinding (derajat)</li>
+            <li><strong>ρ</strong> = Massa jenis fluida (kg/m³)</li>
+            <li><strong>g</strong> = Percepatan gravitasi (m/s²)</li>
+            <li><strong>r</strong> = Jari-jari tabung kapiler (m)</li>
+        </ul>
+        
+        <div class="example">
+            <h3>Penerapan Kapilaritas:</h3>
+            <ul>
+                <li>Naiknya air dari akar ke daun pada tumbuhan</li>
+                <li>Kerja sumbu kompor minyak</li>
+                <li>Penyerapan tinta oleh kertas</li>
+                <li>Kerja lampu minyak</li>
+            </ul>
+        </div>
+        
+        <div class="interactive">
+            <h3>Simulasi Kapilaritas</h3>
+            <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                <div>
+                    <p>Diameter Tabung:</p>
+                    <input type="range" id="tube-diameter" min="1" max="10" value="5" style="width: 200px;">
+                    <p id="diameter-value">5 mm</p>
+                </div>
+                <div>
+                    <p>Sudut Kontak:</p>
+                    <input type="range" id="contact-angle" min="0" max="180" value="30" style="width: 200px;">
+                    <p id="angle-value">30°</p>
+                </div>
+            </div>
+            <div id="capillary-demo" style="height: 250px; background-color: #f8f9fa; border-radius: 5px; position: relative; overflow: hidden;">
+                <div id="capillary-tube" style="width: 50px; height: 200px; background-color: #e3f2fd; border: 2px solid #333; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);">
+                    <div id="capillary-water" style="width: 100%; height: 30%; background-color: #4dabf7; opacity: 0.6; position: absolute; bottom: 0;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2>Viskositas</h2>
+        <p>Viskositas adalah ukuran ketahanan suatu fluida terhadap aliran. Semakin tinggi viskositas, semakin kental fluida tersebut. Viskositas dipengaruhi oleh suhu - untuk cairan, viskositas menurun dengan naiknya suhu, sedangkan untuk gas, viskositas meningkat dengan naiknya suhu.</p>
+        
+        <div class="diagram">
+            <svg width="100%" height="250" viewBox="0 0 400 250">
+                <!-- Tabung viskometer -->
+                <rect x="50" y="50" width="300" height="150" fill="none" stroke="#333" stroke-width="2" />
+                
+                <!-- Fluida dengan viskositas berbeda -->
+                <rect x="60" y="60" width="80" height="130" fill="#4dabf7" opacity="0.3" />
+                <rect x="160" y="60" width="80" height="130" fill="#4dabf7" opacity="0.6" />
+                <rect x="260" y="60" width="80" height="130" fill="#4dabf7" opacity="0.9" />
+                
+                <!-- Bola jatuh -->
+                <circle cx="100" cy="100" r="10" fill="#e03131" class="floating" />
+                <circle cx="200" cy="120" r="10" fill="#e03131" class="floating" style="animation-delay: 0.3s" />
+                <circle cx="300" cy="140" r="10" fill="#e03131" class="floating" style="animation-delay: 0.6s" />
+                
+                <!-- Label -->
+                <text x="100" y="40" font-size="12" fill="#333">Viskositas Rendah</text>
+                <text x="200" y="40" font-size="12" fill="#333">Viskositas Sedang</text>
+                <text x="300" y="40" font-size="12" fill="#333">Viskositas Tinggi</text>
+                <text x="200" y="220" font-size="14" fill="#2c3e50">Viskositas Fluida</text>
+            </svg>
+        </div>
+        
+        <div class="formula">
+            η = (F × L) / (A × Δv)
+        </div>
+        
+        <p>Dimana:</p>
+        <ul>
+            <li><strong>η</strong> = Viskositas (Pa·s atau N·s/m²)</li>
+            <li><strong>F</strong> = Gaya yang diterapkan (N)</li>
+            <li><strong>L</strong> = Jarak antara lapisan fluida (m)</li>
+            <li><strong>A</strong> = Luas penampang (m²)</li>
+            <li><strong>Δv</strong> = Perbedaan kecepatan antara lapisan fluida (m/s)</li>
+        </ul>
+        
+        <div class="important">
+            <h3>Contoh Nilai Viskositas:</h3>
+            <table>
+                <tr>
+                    <th>Fluida</th>
+                    <th>Suhu (°C)</th>
+                    <th>Viskositas (Pa·s)</th>
+                </tr>
+                <tr>
+                    <td>Air</td>
+                    <td>20</td>
+                    <td>0,001002</td>
+                </tr>
+                <tr>
+                    <td>Minyak zaitun</td>
+                    <td>20</td>
+                    <td>0,084</td>
+                </tr>
+                <tr>
+                    <td>Madu</td>
+                    <td>20</td>
+                    <td>~10</td>
+                </tr>
+                <tr>
+                    <td>Udara</td>
+                    <td>20</td>
+                    <td>0,000018</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="interactive">
+            <h3>Simulasi Viskositas</h3>
+            <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                <div>
+                    <p>Pilih Fluida:</p>
+                    <select id="fluid-select" class="btn" style="width: 200px;">
+                        <option value="water">Air</option>
+                        <option value="oil">Minyak</option>
+                        <option value="honey">Madu</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Suhu:</p>
+                    <input type="range" id="temperature" min="0" max="100" value="20" style="width: 200px;">
+                    <p id="temp-value">20°C</p>
+                </div>
+            </div>
+            <div id="viscosity-demo" style="height: 200px; background-color: #f8f9fa; border-radius: 5px; position: relative; overflow: hidden;">
+                <div id="fluid-container" style="width: 100%; height: 100%; position: relative;">
+                    <div id="falling-ball" style="width: 20px; height: 20px; background-color: #e03131; border-radius: 50%; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);"></div>
+                </div>
+            </div>
+            <button id="drop-btn" class="btn" style="margin-top: 15px;">Jatuhkan Bola</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Materi Pembelajaran Fisika. Semua hak dilindungi.</p>
+    </footer>
+
+    <script>
+        // Tegangan Permukaan Interaktif
+        document.getElementById('disturb-btn').addEventListener('click', function() {
+            const insect = document.getElementById('insect');
+            const waterSurface = document.getElementById('water-surface');
+            
+            // Animasi gangguan
+            insect.style.transition = 'all 0.5s';
+            insect.style.top = '0px';
+            
+            waterSurface.style.transition = 'all 0.5s';
+            waterSurface.style.height = '130px';
+            
+            // Reset setelah animasi
+            setTimeout(() => {
+                insect.style.top = '-10px';
+                waterSurface.style.height = '150px';
+                
+                // Hapus transisi untuk animasi floating kembali
+                setTimeout(() => {
+                    insect.style.transition = 'none';
+                    waterSurface.style.transition = 'none';
+                }, 500);
+            }, 1000);
+        });
+        
+        // Kapilaritas Interaktif
+        const diameterSlider = document.getElementById('tube-diameter');
+        const angleSlider = document.getElementById('contact-angle');
+        const diameterValue = document.getElementById('diameter-value');
+        const angleValue = document.getElementById('angle-value');
+        const capillaryWater = document.getElementById('capillary-water');
+        const capillaryTube = document.getElementById('capillary-tube');
+        
+        diameterSlider.addEventListener('input', function() {
+            const diameter = this.value;
+            diameterValue.textContent = diameter + ' mm';
+            
+            // Update lebar tabung
+            capillaryTube.style.width = (50 - (5 - diameter) * 5) + 'px';
+            
+            // Update tinggi air berdasarkan diameter
+            updateCapillaryHeight();
+        });
+        
+        angleSlider.addEventListener('input', function() {
+            const angle = this.value;
+            angleValue.textContent = angle + '°';
+            
+            // Update tinggi air berdasarkan sudut kontak
+            updateCapillaryHeight();
+        });
+        
+        function updateCapillaryHeight() {
+            const diameter = diameterSlider.value;
+            const angle = angleSlider.value;
+            
+            // Hitung tinggi air berdasarkan diameter dan sudut kontak
+            const height = 30 + (10 - diameter) * 5 + (180 - angle) / 10;
+            capillaryWater.style.height = height + '%';
+        }
+        
+        // Viskositas Interaktif
+        const fluidSelect = document.getElementById('fluid-select');
+        const tempSlider = document.getElementById('temperature');
+        const tempValue = document.getElementById('temp-value');
+        const fallingBall = document.getElementById('falling-ball');
+        const dropBtn = document.getElementById('drop-btn');
+        
+        tempSlider.addEventListener('input', function() {
+            const temp = this.value;
+            tempValue.textContent = temp + '°C';
+        });
+        
+        dropBtn.addEventListener('click', function() {
+            const fluid = fluidSelect.value;
+            const temp = tempSlider.value;
+            
+            // Reset posisi bola
+            fallingBall.style.top = '20px';
+            fallingBall.style.transition = 'none';
+            fallingBall.style.opacity = '1';
+            
+            // Hitung kecepatan jatuh berdasarkan fluida dan suhu
+            let speed;
+            switch(fluid) {
+                case 'water':
+                    speed = 2 - (temp / 100);
+                    break;
+                case 'oil':
+                    speed = 4 - (temp / 33.33);
+                    break;
+                case 'honey':
+                    speed = 8 - (temp / 12.5);
+                    break;
+                default:
+                    speed = 2;
+            }
+            
+            // Pastikan speed tidak negatif
+            speed = Math.max(0.5, speed);
+            
+            // Animasi jatuh
+            setTimeout(() => {
+                fallingBall.style.transition = `top ${speed}s linear`;
+                fallingBall.style.top = '180px';
+                
+                // Reset setelah jatuh
+                setTimeout(() => {
+                    fallingBall.style.transition = 'none';
+                    fallingBall.style.top = '20px';
+                }, speed * 1000 + 100);
+            }, 10);
+        });
+    </script>
+</body>
+</html>
