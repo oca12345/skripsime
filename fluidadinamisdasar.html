@@ -20,6 +20,7 @@
         border-radius: 0.5rem;
         font-family: "Courier New", monospace;
         overflow-x: auto;
+        white-space: nowrap; /* Mencegah baris baru pada persamaan */
       }
       .nav-link {
         position: relative;
@@ -37,14 +38,27 @@
       .nav-link:hover::after {
         width: 100%;
       }
+      /* Style untuk placeholder canvas */
+      #pipeFlowCanvas {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #e2e8f0; /* bg-gray-200 */
+        color: #4a5568; /* text-gray-700 */
+        font-style: italic;
+      }
     </style>
   </head>
   <body class="bg-gray-50">
     <div class="container mx-auto px-4 py-8 max-w-6xl">
       <header class="mb-12 text-center">
         <h1 class="text-4xl font-bold text-blue-800 mb-4">Dinamika Fluida</h1>
-       <a href="index.html" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-300 mb-4">Kembali ke Halaman Utama</a>  
- <div class="w-full h-64 rounded-lg overflow-hidden shadow-lg">
+        <a
+          href="index.html"
+          class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-300 mb-6"
+          >Kembali ke Halaman Utama</a
+        >
+        <div class="w-full h-64 rounded-lg overflow-hidden shadow-lg">
           <img
             src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1f8b1223-a08e-40a3-9ec6-4bf7c7cd31df.png"
             alt="Ilustrasi visual aliran fluida yang menunjukkan garis arus berwarna biru mengalir di sekitar objek silinder dengan visualisasi efek Bernoulli"
@@ -53,7 +67,7 @@
         </div>
       </header>
 
-      <nav class="sticky top-0 bg-white shadow-sm rounded-lg mb-8 p-4">
+      <nav class="sticky top-0 bg-white shadow-sm rounded-lg mb-8 p-4 z-10">
         <ul class="flex flex-wrap justify-center gap-6">
           <li>
             <a
@@ -71,9 +85,16 @@
           </li>
           <li>
             <a
+              href="#debit"
+              class="nav-link text-gray-700 hover:text-blue-600"
+              >Debit Fluida</a
+            >
+          </li>
+          <li>
+            <a
               href="#persamaan"
               class="nav-link text-gray-700 hover:text-blue-600"
-              >Persamaan</a
+              >Persamaan Fundamental</a
             >
           </li>
           <li>
@@ -106,14 +127,17 @@
                 padanya. Bidang ini memiliki aplikasi luas mulai dari
                 meteorologi, teknik penerbangan, hingga sistem peredaran darah.
               </p>
-              <p class="mb-4">alira  Fluida dibagi menjadi dua kategori:</p>
+              <p class="mb-4">Aliran Fluida dibagi menjadi dua kategori:</p>
               <ul class="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>laminer:</strong> yaitu aliran fluida dalam pipa sejajar dengan dinding pipa tanpa adanya 
- komponen radial.
+                  <strong>Aliran Laminar:</strong> yaitu aliran fluida yang
+                  bergerak secara teratur dalam lapisan-lapisan sejajar, tanpa
+                  pencampuran yang signifikan antar lapisan.
                 </li>
                 <li>
-                  <strong>Turbulen:</strong> yaitu aliran fluida dalam pipa tidak beraturan/tidak sejajar dengan pipa.
+                  <strong>Aliran Turbulen:</strong> yaitu aliran fluida yang
+                  tidak teratur, ditandai dengan pusaran dan pencampuran acak
+                  yang kuat.
                 </li>
               </ul>
             </div>
@@ -142,11 +166,16 @@
                 </h3>
                 <p>
                   Menyatakan bahwa massa fluida yang masuk sama dengan massa
-                  fluida yang keluar dari suatu volume:
+                  fluida yang keluar dari suatu volume dalam kondisi aliran
+                  tunak:
                 </p>
-                <div class="equation my-3">∮ ρv · dA = -∂/∂t ∭ ρ dV atau A1.v1 = A2.v2 </div>
+                <div class="equation my-3">
+                  $\rho_1 A_1 v_1 = \rho_2 A_2 v_2$ atau untuk fluida
+                  inkompresibel $A_1 v_1 = A_2 v_2$
+                </div>
                 <p>
-                  Dimana ρ adalah densitas fluida dan v adalah kecepatan fluida.
+                  Dimana $\rho$ adalah densitas fluida, $A$ adalah luas
+                  penampang, dan $v$ adalah kecepatan fluida.
                 </p>
               </div>
               <div class="flex items-center justify-center">
@@ -176,12 +205,13 @@
                 </h3>
                 <p>
                   Menyatakan hubungan antara kecepatan, tekanan, dan ketinggian
-                  dalam aliran fluida:
+                  dalam aliran fluida ideal yang tidak termampatkan dan tidak
+                  viskos:
                 </p>
-                <div class="equation my-3">P + ½ρv² + ρgh = konstan</div>
+                <div class="equation my-3">$P + \frac{1}{2}\rho v^2 + \rho gh = \text{konstan}$</div>
                 <p>
-                  Dimana P adalah tekanan, v kecepatan, h ketinggian, g
-                  percepatan gravitasi, dan ρ densitas fluida.
+                  Dimana $P$ adalah tekanan, $v$ kecepatan, $h$ ketinggian, $g$
+                  percepatan gravitasi, dan $\rho$ densitas fluida.
                 </p>
               </div>
             </div>
@@ -193,21 +223,19 @@
             Debit Fluida
           </h2>
           <p class="mb-4">
-            Debit adalah ukuran volume fluida yang mengalir melalui suatu
-            penampang dalam satuan waktu. Debit dapat dihitung dengan rumus:
+            Debit fluida ($Q$) adalah volume fluida yang mengalir melalui suatu
+            penampang per satuan waktu. Ini dapat dihitung dengan rumus:
           </p>
-          <div class="equation my-3">Q = v \ t</div>
-          <p>
-            Dimana:
-          </p>
+          <div class="equation my-3">$Q = A \times v$</div>
+          <p>Dimana:</p>
           <ul class="list-disc pl-6 space-y-2">
-            <li><strong>Q:</strong> Debit (m³/s)</li>
-            <li><strong>t:</strong> waktu (s)</li>
-            <li><strong>v:</strong> volume aliran (m²)</li>
+            <li><strong>Q:</strong> Debit fluida (m³/s)</li>
+            <li><strong>A:</strong> Luas penampang aliran (m²)</li>
+            <li><strong>v:</strong> Kecepatan aliran rata-rata (m/s)</li>
           </ul>
           <p class="mt-4">
             Dengan menggunakan rumus ini, kita dapat menentukan seberapa cepat
-            fluida mengalir melalui pipa atau saluran tertentu.
+            volume fluida mengalir melalui pipa atau saluran tertentu.
           </p>
         </section>
 
@@ -222,14 +250,18 @@
                 Persamaan Navier-Stokes
               </h3>
               <p>
-                Persamaan fundamental yang menggambarkan gerakan fluida viskos:
+                Persamaan fundamental yang menggambarkan gerakan fluida viskos
+                Newtonian yang tidak termampatkan:
               </p>
               <div class="equation my-3">
-                ρ(∂v/∂t + v · ∇v) = -∇P + μ∇²v + ρg
+                $\rho \left( \frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla) \mathbf{v} \right) = -\nabla P + \mu \nabla^2 \mathbf{v} + \mathbf{f}$
               </div>
               <p>
-                Dimana μ adalah viskositas dinamis dan g adalah percepatan
-                gravitasi.
+                Dimana $\rho$ adalah densitas fluida, $\mathbf{v}$ adalah vektor
+                kecepatan fluida, $P$ adalah tekanan, $\mu$ adalah viskositas
+                dinamis, dan $\mathbf{f}$ adalah gaya-gaya eksternal per unit
+                volume (misalnya gravitasi). Persamaan ini sangat kompleks dan
+                merupakan salah satu masalah tak terpecahkan dalam matematika.
               </p>
             </div>
 
@@ -238,11 +270,17 @@
                 <h3 class="text-xl font-medium text-blue-600 mb-3">
                   Bilangan Reynolds
                 </h3>
-                <p>Parameter penting yang menentukan jenis aliran:</p>
-                <div class="equation my-3">Re = (ρvL)/μ</div>
                 <p>
-                  Dimana L adalah panjang karakteristik. Re rendah menunjukkan
-                  aliran laminar, Re tinggi menunjukkan turbulen.
+                  Parameter tak berdimensi penting yang menentukan jenis aliran
+                  fluida (laminar atau turbulen):
+                </p>
+                <div class="equation my-3">$Re = \frac{\rho v L}{\mu}$</div>
+                <p>
+                  Dimana $\rho$ adalah densitas fluida, $v$ adalah kecepatan
+                  rata-rata aliran, $L$ adalah panjang karakteristik (misalnya
+                  diameter pipa), dan $\mu$ adalah viskositas dinamis fluida.
+                  $Re$ rendah (umumnya $Re < 2300$) menunjukkan aliran laminar,
+                  sementara $Re$ tinggi ($Re > 4000$) menunjukkan turbulen.
                 </p>
               </div>
               <div class="flex items-center justify-center">
@@ -327,12 +365,14 @@
               <h3 class="text-lg font-medium text-blue-600 mb-3">
                 Visualisasi Aliran dalam Pipa
               </h3>
-              <div
-                class="w-full h-64 bg-gray-100 rounded-lg overflow-hidden mb-4 flex items-center justify-center"
+              <canvas
                 id="pipeFlowCanvas"
+                width="400"
+                height="256"
+                class="w-full h-64 bg-gray-100 rounded-lg mb-4"
               >
-                <p class="text-gray-500">Memuat simulasi...</p>
-              </div>
+                Browser Anda tidak mendukung elemen Canvas.
+              </canvas>
               <div class="space-y-3">
                 <div>
                   <label class="block text-sm font-medium text-gray-700"
@@ -392,12 +432,7 @@
               </div>
               <div class="bg-gray-50 p-4 rounded-lg">
                 <h4 class="font-medium mb-2">Analisis:</h4>
-                <ul class="list-disc pl-5 space-y-1 text-sm" id="flowAnalysis">
-                  <li>Aliran bersifat laminar</li>
-                  <li>Bilangan Reynolds: 1000</li>
-                  <li>Tidak ada turbulensi yang signifikan</li>
-                  <li>Tekanan stabil di sepanjang pipa</li>
-                </ul>
+                <ul class="list-disc pl-5 space-y-1 text-sm" id="flowAnalysis"></ul>
               </div>
             </div>
           </div>
@@ -429,7 +464,97 @@
     </div>
 
     <script>
-      // Update simulation parameters
+      // Fungsi untuk menginisialisasi MathJax
+      function loadMathJax() {
+        if (window.MathJax) {
+          window.MathJax.typesetPromise(); // Gunakan typesetPromise untuk menangani elemen dinamis
+        } else {
+          const script = document.createElement("script");
+          script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+          script.async = true;
+          document.head.appendChild(script);
+          script.onload = () => {
+            // Konfigurasi MathJax agar bekerja dengan elemen HTML yang dinamis
+            MathJax.startup.ready = () => {
+              MathJax.startup.defaultPageReady();
+              // Memaksa typesetting ulang setelah pembaruan DOM
+              document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typesetPromise();
+              });
+            };
+          };
+        }
+      }
+
+      // Memanggil MathJax setelah DOMContentLoaded
+      document.addEventListener("DOMContentLoaded", loadMathJax);
+
+      const canvas = document.getElementById("pipeFlowCanvas");
+      const ctx = canvas.getContext("2d");
+
+      function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        updateSimulation();
+      }
+
+      window.addEventListener("resize", resizeCanvas);
+
+      function drawPipeFlow(diameter, velocity, reynolds) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Bersihkan canvas
+
+        const pipeHeight = diameter * 10; // Skala diameter untuk visualisasi
+        const pipeY = canvas.height / 2;
+
+        // Gambar pipa
+        ctx.fillStyle = "#ccc";
+        ctx.fillRect(0, pipeY - pipeHeight / 2 - 5, canvas.width, pipeHeight + 10);
+
+        // Gambar fluida
+        ctx.fillStyle = "#ADD8E6"; // Warna biru muda untuk fluida
+        ctx.fillRect(0, pipeY - pipeHeight / 2, canvas.width, pipeHeight);
+
+        // Visualisasi aliran
+        if (reynolds < 2300) {
+          // Aliran Laminar
+          ctx.strokeStyle = "rgba(0, 0, 255, 0.7)"; // Biru transparan
+          ctx.lineWidth = 2;
+          const numLines = 10;
+          for (let i = 0; i < numLines; i++) {
+            const y = pipeY - pipeHeight / 2 + (pipeHeight / (numLines - 1)) * i;
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+            ctx.stroke();
+          }
+          ctx.fillStyle = "#000"; // Hitam untuk teks
+          ctx.font = "16px Poppins";
+          ctx.textAlign = "center";
+          ctx.fillText("Aliran Laminar", canvas.width / 2, pipeY + pipeHeight / 2 + 25);
+        } else {
+          // Aliran Turbulen
+          ctx.fillStyle = "rgba(0, 0, 255, 0.5)"; // Biru transparan
+          const numParticles = 100;
+          for (let i = 0; i < numParticles; i++) {
+            const x = Math.random() * canvas.width;
+            const y = pipeY - pipeHeight / 2 + Math.random() * pipeHeight;
+            ctx.beginPath();
+            ctx.arc(x, y, 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.fillStyle = "#000"; // Hitam untuk teks
+          ctx.font = "16px Poppins";
+          ctx.textAlign = "center";
+          ctx.fillText("Aliran Turbulen", canvas.width / 2, pipeY + pipeHeight / 2 + 25);
+        }
+
+        // Tampilkan nilai Reynolds di canvas
+        ctx.fillStyle = "#000";
+        ctx.font = "14px Poppins";
+        ctx.textAlign = "right";
+        ctx.fillText(`Re = ${reynolds}`, canvas.width - 10, 20);
+      }
+
       document
         .getElementById("pipeDiameter")
         .addEventListener("input", function () {
@@ -460,69 +585,77 @@
         });
 
       function updateSimulation() {
-        const diameter = parseFloat(
+        const diameterCm = parseFloat(
           document.getElementById("pipeDiameter").value
         );
+        const diameterM = diameterCm / 100; // Konversi cm ke meter
         const velocity = parseFloat(
           document.getElementById("flowVelocity").value
         );
-        const viscosity = document.getElementById("viscosity").value;
+        const viscosityType = document.getElementById("viscosity").value;
 
-        // Simple simulation analysis based on inputs
-        let reynolds;
-        switch (viscosity) {
-          case "low":
-            reynolds = Math.round(velocity * diameter * 1000);
+        // Densitas (kg/m^3) dan Viskositas Dinamis (Pa·s) untuk perkiraan
+        let rho, mu;
+        switch (viscosityType) {
+          case "low": // Air pada 20°C
+            rho = 998;
+            mu = 0.001;
             break;
-          case "medium":
-            reynolds = Math.round(velocity * diameter * 500);
+          case "medium": // Minyak (misal: oli mesin)
+            rho = 870;
+            mu = 0.05; // Contoh nilai, bisa bervariasi
             break;
-          case "high":
-            reynolds = Math.round(velocity * diameter * 100);
+          case "high": // Madu
+            rho = 1420;
+            mu = 10; // Contoh nilai, bisa bervariasi
             break;
         }
 
-        const analysisList = document.getElementById("flowAnalysis");
-        analysisList.innerHTML = `
-                <li>${
-                  reynolds < 2300
-                    ? "Aliran bersifat laminar"
-                    : "Aliran bersifat turbulen"
-                }</li>
-                <li>Bilangan Reynolds: ${reynolds}</li>
-                <li>${
-                  reynolds < 2300
-                    ? "Tidak ada turbulensi yang signifikan"
-                    : "Terjadi turbulensi dalam aliran"
-                }</li>
-                <li>${
-                  velocity > 3 && diameter < 3
-                    ? "Potensi penurunan tekanan yang signifikan"
-                    : "Tekanan stabil di sepanjang pipa"
-                }</li>
-            `;
+        // Perhitungan Bilangan Reynolds
+        let reynolds = (rho * velocity * diameterM) / mu;
+        reynolds = Math.round(reynolds); // Bulatkan untuk tampilan
 
-        // Simple canvas visualization
-        const canvas = document.getElementById("pipeFlowCanvas");
-        canvas.innerHTML = `<div class="relative w-full h-full bg-gray-200 overflow-hidden">
-                <div class="absolute left-0 top-1/2 w-full h-12 bg-blue-500 rounded-full transform -translate-y-1/2"></div>
-                <div class="absolute ${
-                  reynolds < 2300 ? "h-10" : "h-16"
-                } left-0 top-1/2 w-full bg-blue-300 rounded-full transform -translate-y-1/2 overflow-hidden">
-                    ${
-                      reynolds < 2300
-                        ? '<div class="h-full w-full bg-blue-400" style="background: linear-gradient(to right, rgba(0,0,255,0.2), rgba(0,0,255,0.4))"></div>'
-                        : '<div class="h-full w-full" style="background: url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="rgba(0,0,255,0.3)" d="M0 10 Q 10 5 20 10 T 40 10" /></svg>\') repeat"></div>'
-                    }
-                </div>
-                <div class="absolute top-4 right-4 bg-white px-2 py-1 rounded text-xs font-medium">
-                    Re = ${reynolds}
-                </div>
-            </div>`;
+        const analysisList = document.getElementById("flowAnalysis");
+        let flowType, turbulenceInfo, pressureInfo;
+
+        if (reynolds < 2300) {
+          flowType = "Aliran bersifat <strong>laminar</strong>";
+          turbulenceInfo = "Tidak ada turbulensi yang signifikan";
+        } else if (reynolds >= 2300 && reynolds <= 4000) {
+          flowType = "Aliran berada dalam zona <strong>transisi</strong> (antara laminar dan turbulen)";
+          turbulenceInfo = "Turbulensi mungkin mulai terbentuk";
+        } else {
+          flowType = "Aliran bersifat <strong>turbulen</strong>";
+          turbulenceInfo = "Terjadi turbulensi yang kuat dalam aliran";
+        }
+
+        // Contoh sederhana untuk tekanan, ini tidak berdasarkan perhitungan fisika sebenarnya
+        // Hanya sebagai ilustrasi perubahan tekanan berdasarkan parameter
+        if (velocity > 3 && diameterCm < 3) {
+          pressureInfo = "Potensi penurunan tekanan yang signifikan akibat kecepatan tinggi dan diameter kecil.";
+        } else if (velocity < 0.5 || diameterCm > 8) {
+          pressureInfo = "Tekanan relatif stabil atau penurunan tekanan minimal.";
+        } else {
+          pressureInfo = "Tekanan cenderung stabil di sepanjang pipa.";
+        }
+
+        analysisList.innerHTML = `
+          <li>${flowType}</li>
+          <li>Bilangan Reynolds: <strong>${reynolds}</strong></li>
+          <li>${turbulenceInfo}</li>
+          <li>${pressureInfo}</li>
+        `;
+
+        drawPipeFlow(diameterCm, velocity, reynolds);
+        
+        // Memaksa MathJax untuk memproses ulang elemen equation jika ada
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
       }
 
-      // Initialize simulation
-      updateSimulation();
+      // Initialize simulation on page load
+      resizeCanvas(); // Panggil resizeCanvas untuk menginisialisasi ukuran dan menggambar
     </script>
   </body>
 </html>
